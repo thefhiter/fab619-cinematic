@@ -5,8 +5,17 @@
   const FR = {
     loaderText: "INITIALISATION DE L'ATELIER",
     navHome: 'Accueil', navAbout: 'À propos', navServices: 'Services',
-    navProjects: 'Projets', navPress: 'Presse', navContact: 'Contact',
+    navProjects: 'Projets', navPartners: 'Partenaires', navPress: 'Presse', navContact: 'Contact',
     scrollHint: 'DÉFILER POUR ENTRER',
+    skipLink: 'Aller au contenu',
+    heroBodyShort: "Machines avancées, systèmes d'automatisation et fabrication numérique — du concept au prototype.",
+    altAbout1: "Banc d'assemblage électronique dans l'atelier FAB619",
+    altAbout2: "Machines en cours d'assemblage dans l'atelier",
+    altAbout3: "Détail d'un système de dosage FAB619",
+    viewProject: 'Voir le projet', readMore: "Lire l'article",
+    atelierTitle: "L'atelier en images",
+    menuLabel: 'Menu', prevLabel: 'Précédent', nextLabel: 'Suivant', slideLabel: 'Diapositive',
+    cineLink: 'Expérience 3D cinématique',
 
     heroKicker: 'BIENVENUE CHEZ FAB619',
     heroTitle: 'Fabrication<br>à la demande',
@@ -70,14 +79,23 @@
 
     zones: ['L’ATELIER', 'QUI SOMMES-NOUS', 'LA CHAÎNE DE PRODUCTION', 'LA GALERIE DES MACHINES', 'LE TUNNEL DES PARTENAIRES', 'LA PRESSE', 'LE BUREAU'],
     zoneNums: ['01', '02', '03', '04', '05', '06', '07'],
-    docTitle: "FAB619 — L'Usine Cinématique | Fabrication à la demande",
+    docTitle: 'FAB619 — Fabrication à la demande | Machines personnalisées, automatisation et fabrication numérique',
   };
 
   const AR = {
     loaderText: 'جارٍ تشغيل الورشة',
     navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات',
-    navProjects: 'المشاريع', navPress: 'الصحافة', navContact: 'اتصل بنا',
+    navProjects: 'المشاريع', navPartners: 'الشركاء', navPress: 'الصحافة', navContact: 'اتصل بنا',
     scrollHint: 'مرّر للدخول',
+    skipLink: 'الانتقال إلى المحتوى',
+    heroBodyShort: 'آلات متقدّمة وأنظمة أتمتة وتصنيع رقمي — من الفكرة إلى النموذج الأوّلي.',
+    altAbout1: 'طاولة تجميع إلكتروني في ورشة فاب ٦١٩',
+    altAbout2: 'آلات قيد التجميع في الورشة',
+    altAbout3: 'تفاصيل نظام جرعات من فاب ٦١٩',
+    viewProject: 'شاهد المشروع', readMore: 'اقرأ المقال',
+    atelierTitle: 'الورشة في صور',
+    menuLabel: 'القائمة', prevLabel: 'السابق', nextLabel: 'التالي', slideLabel: 'شريحة',
+    cineLink: 'التجربة السينمائية ثلاثية الأبعاد',
 
     heroKicker: 'مرحبًا بكم في فاب ٦١٩',
     heroTitle: 'التصنيع<br>عند الطلب',
@@ -141,7 +159,7 @@
 
     zones: ['الورشة', 'من نحن', 'خطّ الإنتاج', 'معرض الآلات', 'نفق الشركاء', 'الصحافة', 'المكتب'],
     zoneNums: ['٠١', '٠٢', '٠٣', '٠٤', '٠٥', '٠٦', '٠٧'],
-    docTitle: 'فاب ٦١٩ — المصنع السينمائي | التصنيع عند الطلب',
+    docTitle: 'فاب ٦١٩ — التصنيع عند الطلب | آلات مخصّصة وأتمتة وتصنيع رقمي',
   };
 
   const DICTS = { fr: FR, ar: AR };
@@ -156,6 +174,14 @@
         if (key === 'heroTitle') el.innerHTML = d[key];
         else el.textContent = d[key];
       }
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (d[key] !== undefined) el.alt = d[key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (d[key] !== undefined) el.setAttribute('aria-label', d[key]);
     });
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';

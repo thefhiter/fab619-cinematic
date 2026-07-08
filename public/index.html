@@ -3,33 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAB619 — L'Usine Cinématique | Fabrication à la demande</title>
-<meta name="description" content="FAB619 — bureau d'études tunisien : machines sur mesure, automatisation et fabrication numérique. Expérience 3D immersive FR/AR.">
+<title>FAB619 — Fabrication à la demande | Machines personnalisées, automatisation et fabrication numérique</title>
+<meta name="description" content="FAB619 — bureau d'études tunisien : machines sur mesure, automatisation, impression 3D, IoT et fabrication numérique. Site bilingue français / arabe.">
+<meta property="og:title" content="FAB619 — Fabrication à la demande">
+<meta property="og:image" content="/assets/images/og-home.webp">
 <link rel="icon" type="image/svg+xml" href="/assets/logo/fab-619-mobile-logo.svg">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body class="lang-fr">
 
-<!-- ambient video element feeding the 3D video wall -->
-<video id="heroVideo" muted loop playsinline preload="auto" poster="/assets/images/slideshow/slide-1.webp" aria-hidden="true">
-  <source src="/assets/videos/hero-video.mp4" type="video/mp4">
-  <source src="/assets/videos/hero-video.webm" type="video/webm">
-</video>
+<a class="skip-link" href="#apropos" data-i18n="skipLink">Aller au contenu</a>
 
-<canvas id="scene" aria-hidden="true"></canvas>
-
-<!-- ══ LOADER ══ -->
-<div id="loader" role="status">
-  <div class="loader-core">
-    <img src="/assets/logo/fab-619-mobile-logo.svg" alt="" class="loader-mark">
-    <div class="loader-word">FAB<span>619</span></div>
-    <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
-    <div class="loader-line"><span id="loaderPct">0%</span><span data-i18n="loaderText">INITIALISATION DE L'ATELIER</span></div>
-  </div>
-</div>
-
-<!-- ══ LANGUAGE SHUTTER ══ -->
+<!-- ══ LANGUAGE SHUTTER (quick industrial wipe) ══ -->
 <div id="shutter" aria-hidden="true">
   <div class="shutter-slats"></div>
   <div class="shutter-brand" id="shutterBrand">فاب ٦١٩</div>
@@ -38,168 +24,278 @@
 
 <!-- ══ NAV ══ -->
 <header id="nav">
-  <a class="nav-logo" href="#" data-goto="0" aria-label="FAB619 — accueil">
-    <img src="/assets/logo/fab-619-logo.svg" alt="FAB619">
+  <a class="nav-logo" href="#accueil" aria-label="FAB619 — accueil">
+    <img src="/assets/logo/fab-619-logo.svg" alt="FAB619" width="115" height="44">
   </a>
-  <nav class="nav-links" aria-label="Navigation principale">
-    <a href="#" data-goto="0"    data-i18n="navHome">Accueil</a>
-    <a href="#" data-goto="0.19" data-i18n="navAbout">À propos</a>
-    <a href="#" data-goto="0.30" data-i18n="navServices">Services</a>
-    <a href="#" data-goto="0.56" data-i18n="navProjects">Projets</a>
-    <a href="#" data-goto="0.90" data-i18n="navPress">Presse</a>
-    <a href="#" data-goto="1"    data-i18n="navContact">Contact</a>
+  <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+    <a href="#accueil"     data-i18n="navHome">Accueil</a>
+    <a href="#apropos"     data-i18n="navAbout">À propos</a>
+    <a href="#services"    data-i18n="navServices">Services</a>
+    <a href="#projets"     data-i18n="navProjects">Projets</a>
+    <a href="#partenaires" data-i18n="navPartners">Partenaires</a>
+    <a href="#presse"      data-i18n="navPress">Presse</a>
+    <a href="#contact"     data-i18n="navContact">Contact</a>
   </nav>
-  <button id="langBtn" aria-label="التبديل إلى العربية">
-    <img src="/assets/language-icon.svg" alt="" width="15" height="15" class="lang-ico">
-    <span id="langBtnText">عربي</span>
-  </button>
+  <div class="nav-actions">
+    <button id="langBtn" aria-label="التبديل إلى العربية">
+      <img src="/assets/language-icon.svg" alt="" width="15" height="15" class="lang-ico">
+      <span id="langBtnText">عربي</span>
+    </button>
+    <button id="burger" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="menuLabel" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<!-- ══ HUD ══ -->
-<div id="progressRail" aria-hidden="true"><div id="progressFill"></div></div>
-<div id="zoneChip" aria-hidden="true"><span id="zoneNum">01</span><span id="zoneName">L'ATELIER</span></div>
-<div id="scrollHint" aria-hidden="true">
-  <span data-i18n="scrollHint">DÉFILER POUR ENTRER</span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 4v16m0 0-6-6m6 6 6-6"/></svg>
-</div>
+<main>
 
-<!-- ══ OVERLAY CONTENT (scroll-synced) ══ -->
-<main id="overlay">
+<!-- ══ HERO SLIDESHOW (video + the 4 original slides) ══ -->
+<section id="accueil" class="hero">
+  <div class="hero-slides">
+    <div class="slide is-active" data-slide="0">
+      <video id="heroVideo" muted loop playsinline autoplay preload="metadata" poster="/assets/images/slideshow/slide-1.webp" aria-hidden="true">
+        <source src="/assets/videos/hero-video.mp4" type="video/mp4">
+        <source src="/assets/videos/hero-video.webm" type="video/webm">
+      </video>
+    </div>
+    <div class="slide" data-slide="1"><img src="/assets/images/slideshow/slide-1.webp" alt="" loading="lazy"></div>
+    <div class="slide" data-slide="2"><img src="/assets/images/slideshow/slide-2.webp" alt="" loading="lazy"></div>
+    <div class="slide" data-slide="3"><img src="/assets/images/slideshow/slide-3.webp" alt="" loading="lazy"></div>
+    <div class="slide" data-slide="4"><img src="/assets/images/slideshow/slide-4.webp" alt="" loading="lazy"></div>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
 
-  <!-- Z0 · HERO -->
-  <section class="panel panel-center" id="p-hero">
+  <div class="hero-content">
     <p class="kicker" data-i18n="heroKicker">BIENVENUE CHEZ FAB619</p>
     <h1 data-i18n="heroTitle">Fabrication<br>à la demande</h1>
-    <p class="lede" data-i18n="heroBody">Un bureau d'études spécialisé dans les machines avancées, les systèmes d'automatisation et la fabrication numérique. Du concept au prototype — des solutions efficaces, testées, optimisées pour la productivité, la qualité et l'évolutivité industrielle.</p>
+    <p class="hero-caption" id="heroCaption" aria-live="polite" data-i18n="heroBodyShort">Machines avancées, systèmes d'automatisation et fabrication numérique — du concept au prototype.</p>
     <div class="hero-cta">
-      <button class="btn btn-solid" data-goto="0.19" data-i18n="heroCta">DÉCOUVRIR</button>
-      <button class="btn btn-ghost" data-goto="1" data-i18n="heroCta2">DEVIS PROJET</button>
+      <a class="btn btn-solid" href="#services" data-i18n="heroCta">DÉCOUVRIR</a>
+      <a class="btn btn-ghost" href="#contact" data-i18n="heroCta2">DEVIS PROJET</a>
     </div>
-  </section>
+  </div>
 
-  <!-- Z1 · ABOUT -->
-  <section class="panel panel-side" id="p-about">
-    <p class="kicker" data-i18n="aboutKicker">QUI SOMMES-NOUS ?</p>
-    <h2 data-i18n="aboutTitle">L'innovation, du concept à l'intégration</h2>
-    <p data-i18n="aboutBody1">Nous concevons et développons des machines sur mesure, des systèmes d'automatisation et des produits intelligents qui comblent le fossé entre l'innovation et la performance industrielle.</p>
-    <p data-i18n="aboutBody2">Machines CNC personnalisées, appareils IoT, cartes PCB, fabrication numérique ou formations en atelier — des technologies pratiques et évolutives, pour un impact réel et des résultats mesurables.</p>
-    <p data-i18n="aboutBody3">Notre équipe multidisciplinaire réunit mécanique, électronique, logiciel machine et fabrication numérique — du prototypage à la production.</p>
-  </section>
+  <div class="hero-controls">
+    <button class="slide-btn" id="slidePrev" data-i18n-aria="prevLabel" aria-label="Diapositive précédente">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="slide-dots" id="slideDots" role="tablist"></div>
+    <button class="slide-btn" id="slideNext" data-i18n-aria="nextLabel" aria-label="Diapositive suivante">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
 
-  <!-- Z2 · SERVICES (6 cards revealed along the line) -->
-  <section class="panel panel-side" id="p-serv-head">
-    <p class="kicker" data-i18n="servKicker">NOS SERVICES</p>
-    <h2 data-i18n="servTitle">Du concept au produit final</h2>
-    <p data-i18n="servBody">Une large gamme de services de fabrication innovants, le long d'une seule chaîne de production.</p>
-  </section>
+<!-- ══ À PROPOS ══ -->
+<section id="apropos" class="section">
+  <div class="wrap cols">
+    <div class="col-text reveal">
+      <p class="kicker" data-i18n="aboutKicker">QUI SOMMES-NOUS ?</p>
+      <h2 data-i18n="aboutTitle">L'innovation, du concept à l'intégration</h2>
+      <p data-i18n="aboutBody1">Nous concevons et développons des machines sur mesure, des systèmes d'automatisation et des produits intelligents qui comblent le fossé entre l'innovation et la performance industrielle.</p>
+      <p data-i18n="aboutBody2">Machines CNC personnalisées, appareils IoT, cartes PCB, fabrication numérique ou formations en atelier — des technologies pratiques et évolutives, pour un impact réel et des résultats mesurables.</p>
+      <p data-i18n="aboutBody3">Notre équipe multidisciplinaire réunit mécanique, électronique, logiciel machine et fabrication numérique — du prototypage à la production.</p>
+    </div>
+    <div class="col-media reveal">
+      <img class="about-tall" src="/assets/images/whoarewe/left.webp" data-i18n-alt="altAbout1" alt="Banc d'assemblage électronique dans l'atelier FAB619" loading="lazy" width="365" height="660">
+      <div class="about-stack">
+        <img src="/assets/images/whoarewe/right-top.webp" data-i18n-alt="altAbout2" alt="Machines en cours d'assemblage" loading="lazy" width="420" height="240">
+        <img src="/assets/images/whoarewe/right-bottom.webp" data-i18n-alt="altAbout3" alt="Détail d'un système de dosage" loading="lazy" width="420" height="240">
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="panel panel-card" id="p-serv-0">
-    <img class="card-icon" src="/assets/icons/settings.svg" alt="">
-    <span class="card-index">01</span>
-    <h3 data-i18n="s1t">Machines personnalisées</h3>
-    <p data-i18n="s1d">Développement de machines · Systèmes d'automatisation · Robotique avancée</p>
-  </section>
-  <section class="panel panel-card" id="p-serv-1">
-    <img class="card-icon" src="/assets/icons/printer3d.svg" alt="">
-    <span class="card-index">02</span>
-    <h3 data-i18n="s2t">Impression 3D &amp; Usinage CNC</h3>
-    <p data-i18n="s2d">Fabrication à la demande · Prototypage rapide · Production personnalisée</p>
-  </section>
-  <section class="panel panel-card" id="p-serv-2">
-    <img class="card-icon" src="/assets/icons/electronics.svg" alt="">
-    <span class="card-index">03</span>
-    <h3 data-i18n="s3t">IoT &amp; Électronique</h3>
-    <p data-i18n="s3d">Circuits électroniques · Conception PCB &amp; intégration IoT · Logiciel embarqué</p>
-  </section>
-  <section class="panel panel-card" id="p-serv-3">
-    <img class="card-icon" src="/assets/icons/design.svg" alt="">
-    <span class="card-index">04</span>
-    <h3 data-i18n="s4t">Conception matérielle</h3>
-    <p data-i18n="s4d">Conception de produits · Ingénierie matérielle · Prototypage · Intégration électronique</p>
-  </section>
-  <section class="panel panel-card" id="p-serv-4">
-    <img class="card-icon" src="/assets/icons/software.svg" alt="">
-    <span class="card-index">05</span>
-    <h3 data-i18n="s5t">Logiciel de machine</h3>
-    <p data-i18n="s5d">Algorithmes de contrôle · Surveillance temps réel · Logiciel personnalisé</p>
-  </section>
-  <section class="panel panel-card" id="p-serv-5">
-    <img class="card-icon" src="/assets/icons/workshop.svg" alt="">
-    <span class="card-index">06</span>
-    <h3 data-i18n="s6t">Ateliers &amp; Formation</h3>
-    <p data-i18n="s6d">Documentation technique · Ateliers pratiques · Sessions de formation</p>
-  </section>
+<!-- ══ SERVICES ══ -->
+<section id="services" class="section section-tint">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker" data-i18n="servKicker">NOS SERVICES</p>
+      <h2 data-i18n="servTitle">Du concept au produit final</h2>
+      <p data-i18n="servBody">Une large gamme de services de fabrication innovants, le long d'une seule chaîne de production.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/custom-machine.webp" data-i18n-alt="s1t" alt="Machines personnalisées" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/settings.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s1t">Machines personnalisées</h3>
+        <p data-i18n="s1d">Développement de machines · Systèmes d'automatisation · Robotique avancée</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/printing.webp" data-i18n-alt="s2t" alt="Impression 3D et usinage CNC" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/printer3d.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s2t">Impression 3D &amp; Usinage CNC</h3>
+        <p data-i18n="s2d">Fabrication à la demande · Prototypage rapide · Production personnalisée</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/electronics.webp" data-i18n-alt="s3t" alt="IoT et électronique" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/electronics.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s3t">IoT &amp; Électronique</h3>
+        <p data-i18n="s3d">Circuits électroniques · Conception PCB &amp; intégration IoT · Logiciel embarqué</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/design.webp" data-i18n-alt="s4t" alt="Conception matérielle" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/design.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s4t">Conception matérielle</h3>
+        <p data-i18n="s4d">Conception de produits · Ingénierie matérielle · Prototypage · Intégration électronique</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/machine-software.webp" data-i18n-alt="s5t" alt="Logiciel de machine" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/software.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s5t">Logiciel de machine</h3>
+        <p data-i18n="s5d">Algorithmes de contrôle · Surveillance temps réel · Logiciel personnalisé</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-img"><img src="/assets/images/services/workshop.webp" data-i18n-alt="s6t" alt="Ateliers et formation" loading="lazy"></div>
+        <img class="card-ico" src="/assets/icons/workshop.svg" alt="" width="34" height="34">
+        <h3 data-i18n="s6t">Ateliers &amp; Formation</h3>
+        <p data-i18n="s6d">Documentation technique · Ateliers pratiques · Sessions de formation</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <!-- Z3 · PROJECTS -->
-  <section class="panel panel-side" id="p-proj-head">
-    <p class="kicker" data-i18n="projKicker">NOS PROJETS</p>
-    <h2 data-i18n="projTitle">La galerie des machines</h2>
-    <p data-i18n="projBody">Nos solutions sur mesure en action — des machines intelligentes aux innovations industrielles.</p>
-  </section>
+<!-- ══ PROJETS ══ -->
+<section id="projets" class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker" data-i18n="projKicker">NOS PROJETS</p>
+      <h2 data-i18n="projTitle">La galerie des machines</h2>
+      <p data-i18n="projBody">Nos solutions sur mesure en action — des machines intelligentes aux innovations industrielles.</p>
+    </div>
+  </div>
+  <div class="carousel-shell reveal">
+    <button class="car-btn" id="projPrev" data-i18n-aria="prevLabel" aria-label="Précédent">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <ul class="carousel" id="projCarousel">
+      <li class="proj-card">
+        <a href="https://www.fab619.tn/fr/projects/scpds-station-de-pompage-pour-adhesifs-a-faible-viscosite" target="_blank" rel="noopener">
+          <img src="/assets/projects/baa5df419ca3a2bcf2ce3d3d6b478ab42be46025-1684x1042.webp" alt="SCPDS — station de pompage" loading="lazy">
+          <span class="proj-tag" data-i18n="proj1tag">PODS · PNEUMATIQUE</span>
+          <h3>SCPDS</h3>
+          <p data-i18n="proj1d">Station de pompage pneumatique pour l'alimentation continue d'adhésifs liquides et de matériaux à faible viscosité — pompe à membrane de haute précision.</p>
+          <span class="proj-more" data-i18n="viewProject">Voir le projet</span>
+        </a>
+      </li>
+      <li class="proj-card">
+        <a href="https://www.fab619.tn/fr/projects/jelly-doser-systeme-intelligente-de-depose-de-liquides" target="_blank" rel="noopener">
+          <img src="/assets/projects/006a87db783aad06dd8868ad9f75a5d6f0ea42f2-1170x723.webp" alt="JELLY DOSER — système de dosage" loading="lazy">
+          <span class="proj-tag" data-i18n="proj2tag">DOSAGE · PRÉCISION</span>
+          <h3>JELLY DOSER</h3>
+          <p data-i18n="proj2d">Système de dépose et dosage intelligent pour les applications exigeant grande précision, cadence élevée et parfaite répétabilité.</p>
+          <span class="proj-more" data-i18n="viewProject">Voir le projet</span>
+        </a>
+      </li>
+      <li class="proj-card">
+        <a href="https://www.fab619.tn/fr/projects/jellyedge-4-00-trinning-modelss" target="_blank" rel="noopener">
+          <img src="/assets/projects/e4e94d580eb49fcde099df410871400c377d17d1-879x553.png" alt="JellyEdge 4.00 — modèles de formation" loading="lazy">
+          <span class="proj-tag" data-i18n="proj3tag">EDUTECH · INDUSTRIE 4.0</span>
+          <h3>JELLYEDGE 4.00</h3>
+          <p data-i18n="proj3d">Quatre modèles de formation couvrant les piliers de l'industrie intelligente : automatisation, IoT, communication et production.</p>
+          <span class="proj-more" data-i18n="viewProject">Voir le projet</span>
+        </a>
+      </li>
+      <li class="proj-card">
+        <a href="https://www.fab619.tn/fr/projects/adm-idex-v2-machine-de-depose-automatisee-nouvelle-generation" target="_blank" rel="noopener">
+          <img src="/assets/projects/6eac568e6cbd8498b060e9d0f1924a8864d80def-4000x2472.webp" alt="ADM IDEX V2 — machine de dépose" loading="lazy">
+          <span class="proj-tag" data-i18n="proj4tag">CNC · INOX</span>
+          <h3>ADM IDEX V2</h3>
+          <p data-i18n="proj4d">Machine CNC de dépose nouvelle génération — châssis inox, double tête IDEX indépendante, optimisée pour les matériaux visqueux.</p>
+          <span class="proj-more" data-i18n="viewProject">Voir le projet</span>
+        </a>
+      </li>
+      <li class="proj-card">
+        <a href="https://www.fab619.tn/fr/projects/jellyedge-industry-4-0-in-action" target="_blank" rel="noopener">
+          <img src="/assets/projects/445483b4a542ceb6f6f5f563cdf93e035fbade8a-1980x1224.webp" alt="JellyEdge — Industry 4.0 in action" loading="lazy">
+          <span class="proj-tag" data-i18n="proj5tag">PLATEFORME · FORMATION</span>
+          <h3>JELLYEDGE — INDUSTRY 4.0</h3>
+          <p data-i18n="proj5d">Plateforme Edutech dédiée à l'apprentissage pratique des technologies Industrie 4.0 — pour universités et centres de formation.</p>
+          <span class="proj-more" data-i18n="viewProject">Voir le projet</span>
+        </a>
+      </li>
+    </ul>
+    <button class="car-btn" id="projNext" data-i18n-aria="nextLabel" aria-label="Suivant">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
 
-  <section class="panel panel-card" id="p-proj-0">
-    <span class="card-index" data-i18n="proj1tag">PODS · PNEUMATIQUE</span>
-    <h3>SCPDS</h3>
-    <p data-i18n="proj1d">Station de pompage pneumatique pour l'alimentation continue d'adhésifs liquides et de matériaux à faible viscosité — pompe à membrane de haute précision.</p>
-  </section>
-  <section class="panel panel-card" id="p-proj-1">
-    <span class="card-index" data-i18n="proj2tag">DOSAGE · PRÉCISION</span>
-    <h3>JELLY DOSER</h3>
-    <p data-i18n="proj2d">Système de dépose et dosage intelligent pour les applications exigeant grande précision, cadence élevée et parfaite répétabilité.</p>
-  </section>
-  <section class="panel panel-card" id="p-proj-2">
-    <span class="card-index" data-i18n="proj3tag">EDUTECH · INDUSTRIE 4.0</span>
-    <h3>JELLYEDGE 4.00</h3>
-    <p data-i18n="proj3d">Quatre modèles de formation couvrant les piliers de l'industrie intelligente : automatisation, IoT, communication et production.</p>
-  </section>
-  <section class="panel panel-card" id="p-proj-3">
-    <span class="card-index" data-i18n="proj4tag">CNC · INOX</span>
-    <h3>ADM IDEX V2</h3>
-    <p data-i18n="proj4d">Machine CNC de dépose nouvelle génération — châssis inox, double tête IDEX indépendante, optimisée pour les matériaux visqueux.</p>
-  </section>
-  <section class="panel panel-card" id="p-proj-4">
-    <span class="card-index" data-i18n="proj5tag">PLATEFORME · FORMATION</span>
-    <h3>JELLYEDGE — INDUSTRY 4.0</h3>
-    <p data-i18n="proj5d">Plateforme Edutech dédiée à l'apprentissage pratique des technologies Industrie 4.0 — pour universités et centres de formation.</p>
-  </section>
+  <div class="wrap reveal">
+    <h3 class="strip-title" data-i18n="atelierTitle">L'atelier en images</h3>
+    <div class="photo-strip">
+      <img src="/assets/projects/61e4a173a50e5a79058b911ba75acda0e443cd04-2340x1446.webp" alt="" loading="lazy">
+      <img src="/assets/projects/24bd82afb18a3b269e904fdfbac49b71b8ede0dc-1754x1084.webp" alt="" loading="lazy">
+      <img src="/assets/projects/8f1db9ab2795425217acc54ea21c77cbb3ba9fca-1080x1080.jpg" alt="" loading="lazy">
+      <img src="/assets/projects/b54be78e565a7ca42f61e0b8a44108e36127d346-1200x900.webp" alt="" loading="lazy">
+      <img src="/assets/projects/f9ebed2dcac91d5089d312ca89558e6b2c7b754b-1080x707.webp" alt="" loading="lazy">
+      <img src="/assets/projects/5456fd20b9cdb721a2973a2e09a862c114953ebf-1080x667.webp" alt="" loading="lazy">
+      <img src="/assets/projects/64776a1da103719d7b848bd82929293397b0fed0-1754x1084.webp" alt="" loading="lazy">
+      <img src="/assets/projects/14d53df181f781f910d4e3c395bc55c823d5e9ab-1170x723.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
 
-  <!-- Z4 · PARTNERS -->
-  <section class="panel panel-center" id="p-partners">
+<!-- ══ PARTENAIRES ══ -->
+<section id="partenaires" class="section section-tint">
+  <div class="wrap sec-head reveal">
     <p class="kicker" data-i18n="partKicker">CLIENTS &amp; PARTENAIRES</p>
     <h2 data-i18n="partTitle">Collaborer pour construire l'avenir de la fabrication</h2>
     <p data-i18n="partBody">L'innovation prospère grâce à la collaboration — industries, institutions et organisations qui partagent notre passion pour la fabrication de pointe et le matériel open source.</p>
-  </section>
+  </div>
+  <div class="marquee reveal" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+</section>
 
-  <!-- Z5 · PRESS -->
-  <section class="panel panel-side" id="p-press-head">
-    <p class="kicker" data-i18n="pressKicker">PRESSE &amp; ACTUALITÉS</p>
-    <h2 data-i18n="pressTitle">Actualités, mises à jour et histoires</h2>
-    <p data-i18n="pressBody">Nos derniers événements, projets et solutions innovantes.</p>
-  </section>
+<!-- ══ PRESSE ══ -->
+<section id="presse" class="section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker" data-i18n="pressKicker">PRESSE &amp; ACTUALITÉS</p>
+      <h2 data-i18n="pressTitle">Actualités, mises à jour et histoires</h2>
+      <p data-i18n="pressBody">Nos derniers événements, projets et solutions innovantes.</p>
+    </div>
+    <div class="press-grid">
+      <article class="press-card reveal">
+        <a href="https://www.fab619.tn/fr/press" target="_blank" rel="noopener">
+          <img src="/assets/projects/9ad09fa11d0af9946fadd3455bd633cea6c59810-3496x2161.webp" data-i18n-alt="press1t" alt="JellyDoser" loading="lazy">
+          <time dir="ltr" data-i18n="press1date">22.10.2025</time>
+          <h3 data-i18n="press1t">JellyDoser — Doser avec précision</h3>
+          <p data-i18n="press1d">Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.</p>
+          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
+        </a>
+      </article>
+      <article class="press-card reveal">
+        <a href="https://www.fab619.tn/fr/press/quand-la-fabrication-numerique-repond-aux-defis-de-l-industrie-automobile" target="_blank" rel="noopener">
+          <img src="/assets/projects/ad03852f168ab82e2511d70d3f8184bc8d06ccc0-1366x768.jpg" data-i18n-alt="press2t" alt="Fabrication numérique automobile" loading="lazy">
+          <time dir="ltr" data-i18n="press2date">22.08.2025</time>
+          <h3 data-i18n="press2t">La fabrication numérique face aux défis de l'automobile</h3>
+          <p data-i18n="press2d">Pompage, dosage et dépose d'adhésifs : précision, répétabilité et automatisation dans les procédés modernes d'assemblage — ADM IDEX, SCPDS, JELLY DOSER.</p>
+          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
+        </a>
+      </article>
+      <article class="press-card reveal">
+        <a href="https://www.fab619.tn/fr/press/machine-building-workshop-round-2-4x-cnc-for-cettex-cetime-cetiba" target="_blank" rel="noopener">
+          <img src="/assets/projects/a31235291b1a7ce1cb5492d5f7a95b9b1bbdc73d-928x634.webp" data-i18n-alt="press3t" alt="Machine Building Workshop" loading="lazy">
+          <time dir="ltr" data-i18n="press3date">20.05.2025</time>
+          <h3 data-i18n="press3t">Machine Building Workshop — Round 2</h3>
+          <p data-i18n="press3d">4 machines CNC construites pour CETTEX · CETIME · CETIBA — la formation par la fabrication.</p>
+          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <section class="panel panel-card" id="p-press-0">
-    <span class="card-index"><span dir="ltr" data-i18n="press1date">22.10.2025</span></span>
-    <h3 data-i18n="press1t">JellyDoser — Doser avec précision</h3>
-    <p data-i18n="press1d">Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.</p>
-  </section>
-  <section class="panel panel-card" id="p-press-1">
-    <span class="card-index"><span dir="ltr" data-i18n="press2date">22.08.2025</span></span>
-    <h3 data-i18n="press2t">La fabrication numérique face aux défis de l'automobile</h3>
-    <p data-i18n="press2d">Pompage, dosage et dépose d'adhésifs : précision, répétabilité et automatisation dans les procédés modernes d'assemblage — ADM IDEX, SCPDS, JELLY DOSER.</p>
-  </section>
-  <section class="panel panel-card" id="p-press-2">
-    <span class="card-index"><span dir="ltr" data-i18n="press3date">20.05.2025</span></span>
-    <h3 data-i18n="press3t">Machine Building Workshop — Round 2</h3>
-    <p data-i18n="press3d">4 machines CNC construites pour CETTEX · CETIME · CETIBA — la formation par la fabrication.</p>
-  </section>
-
-  <!-- Z6 · CONTACT -->
-  <section class="panel panel-contact" id="p-contact">
-    <p class="kicker" data-i18n="ctKicker">NOUS CONTACTER</p>
-    <h2 data-i18n="ctTitle">Prêt à démarrer votre projet ?</h2>
-    <p data-i18n="ctBody">Pour découvrir ce que FAB619 peut faire pour votre entreprise ou recevoir un devis, contactez-nous.</p>
-
-    <div class="ct-grid">
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section section-dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker" data-i18n="ctKicker">NOUS CONTACTER</p>
+      <h2 data-i18n="ctTitle">Prêt à démarrer votre projet ?</h2>
+      <p data-i18n="ctBody">Pour découvrir ce que FAB619 peut faire pour votre entreprise ou recevoir un devis, contactez-nous.</p>
+    </div>
+    <div class="ct-grid reveal">
       <div class="ct-block">
         <span class="ct-label" data-i18n="ctPhones">TÉLÉPHONE</span>
         <a href="tel:+21655336659" dir="ltr">+216 55 336 659</a>
@@ -228,21 +324,24 @@
         <a href="https://www.google.com/maps/search/?api=1&amp;query=36.849250,10.199806" target="_blank" rel="noopener" data-i18n="ctAddr2">A8-8, Golden Towers, Centre Urbain Nord, Tunis, Tunisie</a>
       </div>
     </div>
-
-    <div class="hero-cta">
+    <div class="ct-cta reveal">
       <a class="btn btn-solid" href="mailto:contact@fab619.tn" data-i18n="ctCta">NOUS ÉCRIRE</a>
     </div>
-    <p class="footer-line"><span data-i18n="footRights">Tous droits réservés 2025 © FAB619 — Fabrication à la demande</span> · <a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a></p>
-  </section>
+  </div>
+</section>
 </main>
 
-<div id="spacer" aria-hidden="true"></div>
+<footer>
+  <p><span data-i18n="footRights">Tous droits réservés 2025 © FAB619 — Fabrication à la demande</span></p>
+  <p>
+    <a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a>
+    <span aria-hidden="true"> · </span>
+    <a href="/cinematic.html" data-i18n="cineLink">Expérience 3D cinématique</a>
+  </p>
+</footer>
 
 <script src="/lib/gsap.min.js"></script>
-<script type="importmap">
-{ "imports": { "three": "/lib/three.module.js", "three/addons/": "/lib/jsm/" } }
-</script>
 <script src="/js/i18n.js"></script>
-<script type="module" src="/js/main.js"></script>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

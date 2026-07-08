@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAB619 — L'Usine Cinématique | Fabrication à la demande</title>
+<meta name="description" content="FAB619 — bureau d'études tunisien : machines sur mesure, automatisation et fabrication numérique. Expérience 3D immersive FR/AR.">
+<link rel="icon" type="image/svg+xml" href="/assets/logo/fab-619-mobile-logo.svg">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/cinematic.css">
+</head>
+<body class="lang-fr">
+
+<!-- ambient video element feeding the 3D video wall -->
+<video id="heroVideo" muted loop playsinline preload="auto" poster="/assets/images/slideshow/slide-1.webp" aria-hidden="true">
+  <source src="/assets/videos/hero-video.mp4" type="video/mp4">
+  <source src="/assets/videos/hero-video.webm" type="video/webm">
+</video>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<!-- ══ LOADER ══ -->
+<div id="loader" role="status">
+  <div class="loader-core">
+    <img src="/assets/logo/fab-619-mobile-logo.svg" alt="" class="loader-mark">
+    <div class="loader-word">FAB<span>619</span></div>
+    <div class="loader-track"><div class="loader-fill" id="loaderFill"></div></div>
+    <div class="loader-line"><span id="loaderPct">0%</span><span data-i18n="loaderText">INITIALISATION DE L'ATELIER</span></div>
+  </div>
+</div>
+
+<!-- ══ LANGUAGE SHUTTER ══ -->
+<div id="shutter" aria-hidden="true">
+  <div class="shutter-slats"></div>
+  <div class="shutter-brand" id="shutterBrand">فاب ٦١٩</div>
+  <div class="shutter-laser"></div>
+</div>
+
+<!-- ══ NAV ══ -->
+<header id="nav">
+  <a class="nav-logo" href="#" data-goto="0" aria-label="FAB619 — accueil">
+    <img src="/assets/logo/fab-619-logo.svg" alt="FAB619">
+  </a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#" data-goto="0"    data-i18n="navHome">Accueil</a>
+    <a href="#" data-goto="0.19" data-i18n="navAbout">À propos</a>
+    <a href="#" data-goto="0.30" data-i18n="navServices">Services</a>
+    <a href="#" data-goto="0.56" data-i18n="navProjects">Projets</a>
+    <a href="#" data-goto="0.90" data-i18n="navPress">Presse</a>
+    <a href="#" data-goto="1"    data-i18n="navContact">Contact</a>
+  </nav>
+  <button id="langBtn" aria-label="التبديل إلى العربية">
+    <img src="/assets/language-icon.svg" alt="" width="15" height="15" class="lang-ico">
+    <span id="langBtnText">عربي</span>
+  </button>
+</header>
+
+<!-- ══ HUD ══ -->
+<div id="progressRail" aria-hidden="true"><div id="progressFill"></div></div>
+<div id="zoneChip" aria-hidden="true"><span id="zoneNum">01</span><span id="zoneName">L'ATELIER</span></div>
+<div id="scrollHint" aria-hidden="true">
+  <span data-i18n="scrollHint">DÉFILER POUR ENTRER</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 4v16m0 0-6-6m6 6 6-6"/></svg>
+</div>
+
+<!-- ══ OVERLAY CONTENT (scroll-synced) ══ -->
+<main id="overlay">
+
+  <!-- Z0 · HERO -->
+  <section class="panel panel-center" id="p-hero">
+    <p class="kicker" data-i18n="heroKicker">BIENVENUE CHEZ FAB619</p>
+    <h1 data-i18n="heroTitle">Fabrication<br>à la demande</h1>
+    <p class="lede" data-i18n="heroBody">Un bureau d'études spécialisé dans les machines avancées, les systèmes d'automatisation et la fabrication numérique. Du concept au prototype — des solutions efficaces, testées, optimisées pour la productivité, la qualité et l'évolutivité industrielle.</p>
+    <div class="hero-cta">
+      <button class="btn btn-solid" data-goto="0.19" data-i18n="heroCta">DÉCOUVRIR</button>
+      <button class="btn btn-ghost" data-goto="1" data-i18n="heroCta2">DEVIS PROJET</button>
+    </div>
+  </section>
+
+  <!-- Z1 · ABOUT -->
+  <section class="panel panel-side" id="p-about">
+    <p class="kicker" data-i18n="aboutKicker">QUI SOMMES-NOUS ?</p>
+    <h2 data-i18n="aboutTitle">L'innovation, du concept à l'intégration</h2>
+    <p data-i18n="aboutBody1">Nous concevons et développons des machines sur mesure, des systèmes d'automatisation et des produits intelligents qui comblent le fossé entre l'innovation et la performance industrielle.</p>
+    <p data-i18n="aboutBody2">Machines CNC personnalisées, appareils IoT, cartes PCB, fabrication numérique ou formations en atelier — des technologies pratiques et évolutives, pour un impact réel et des résultats mesurables.</p>
+    <p data-i18n="aboutBody3">Notre équipe multidisciplinaire réunit mécanique, électronique, logiciel machine et fabrication numérique — du prototypage à la production.</p>
+  </section>
+
+  <!-- Z2 · SERVICES (6 cards revealed along the line) -->
+  <section class="panel panel-side" id="p-serv-head">
+    <p class="kicker" data-i18n="servKicker">NOS SERVICES</p>
+    <h2 data-i18n="servTitle">Du concept au produit final</h2>
+    <p data-i18n="servBody">Une large gamme de services de fabrication innovants, le long d'une seule chaîne de production.</p>
+  </section>
+
+  <section class="panel panel-card" id="p-serv-0">
+    <img class="card-icon" src="/assets/icons/settings.svg" alt="">
+    <span class="card-index">01</span>
+    <h3 data-i18n="s1t">Machines personnalisées</h3>
+    <p data-i18n="s1d">Développement de machines · Systèmes d'automatisation · Robotique avancée</p>
+  </section>
+  <section class="panel panel-card" id="p-serv-1">
+    <img class="card-icon" src="/assets/icons/printer3d.svg" alt="">
+    <span class="card-index">02</span>
+    <h3 data-i18n="s2t">Impression 3D &amp; Usinage CNC</h3>
+    <p data-i18n="s2d">Fabrication à la demande · Prototypage rapide · Production personnalisée</p>
+  </section>
+  <section class="panel panel-card" id="p-serv-2">
+    <img class="card-icon" src="/assets/icons/electronics.svg" alt="">
+    <span class="card-index">03</span>
+    <h3 data-i18n="s3t">IoT &amp; Électronique</h3>
+    <p data-i18n="s3d">Circuits électroniques · Conception PCB &amp; intégration IoT · Logiciel embarqué</p>
+  </section>
+  <section class="panel panel-card" id="p-serv-3">
+    <img class="card-icon" src="/assets/icons/design.svg" alt="">
+    <span class="card-index">04</span>
+    <h3 data-i18n="s4t">Conception matérielle</h3>
+    <p data-i18n="s4d">Conception de produits · Ingénierie matérielle · Prototypage · Intégration électronique</p>
+  </section>
+  <section class="panel panel-card" id="p-serv-4">
+    <img class="card-icon" src="/assets/icons/software.svg" alt="">
+    <span class="card-index">05</span>
+    <h3 data-i18n="s5t">Logiciel de machine</h3>
+    <p data-i18n="s5d">Algorithmes de contrôle · Surveillance temps réel · Logiciel personnalisé</p>
+  </section>
+  <section class="panel panel-card" id="p-serv-5">
+    <img class="card-icon" src="/assets/icons/workshop.svg" alt="">
+    <span class="card-index">06</span>
+    <h3 data-i18n="s6t">Ateliers &amp; Formation</h3>
+    <p data-i18n="s6d">Documentation technique · Ateliers pratiques · Sessions de formation</p>
+  </section>
+
+  <!-- Z3 · PROJECTS -->
+  <section class="panel panel-side" id="p-proj-head">
+    <p class="kicker" data-i18n="projKicker">NOS PROJETS</p>
+    <h2 data-i18n="projTitle">La galerie des machines</h2>
+    <p data-i18n="projBody">Nos solutions sur mesure en action — des machines intelligentes aux innovations industrielles.</p>
+  </section>
+
+  <section class="panel panel-card" id="p-proj-0">
+    <span class="card-index" data-i18n="proj1tag">PODS · PNEUMATIQUE</span>
+    <h3>SCPDS</h3>
+    <p data-i18n="proj1d">Station de pompage pneumatique pour l'alimentation continue d'adhésifs liquides et de matériaux à faible viscosité — pompe à membrane de haute précision.</p>
+  </section>
+  <section class="panel panel-card" id="p-proj-1">
+    <span class="card-index" data-i18n="proj2tag">DOSAGE · PRÉCISION</span>
+    <h3>JELLY DOSER</h3>
+    <p data-i18n="proj2d">Système de dépose et dosage intelligent pour les applications exigeant grande précision, cadence élevée et parfaite répétabilité.</p>
+  </section>
+  <section class="panel panel-card" id="p-proj-2">
+    <span class="card-index" data-i18n="proj3tag">EDUTECH · INDUSTRIE 4.0</span>
+    <h3>JELLYEDGE 4.00</h3>
+    <p data-i18n="proj3d">Quatre modèles de formation couvrant les piliers de l'industrie intelligente : automatisation, IoT, communication et production.</p>
+  </section>
+  <section class="panel panel-card" id="p-proj-3">
+    <span class="card-index" data-i18n="proj4tag">CNC · INOX</span>
+    <h3>ADM IDEX V2</h3>
+    <p data-i18n="proj4d">Machine CNC de dépose nouvelle génération — châssis inox, double tête IDEX indépendante, optimisée pour les matériaux visqueux.</p>
+  </section>
+  <section class="panel panel-card" id="p-proj-4">
+    <span class="card-index" data-i18n="proj5tag">PLATEFORME · FORMATION</span>
+    <h3>JELLYEDGE — INDUSTRY 4.0</h3>
+    <p data-i18n="proj5d">Plateforme Edutech dédiée à l'apprentissage pratique des technologies Industrie 4.0 — pour universités et centres de formation.</p>
+  </section>
+
+  <!-- Z4 · PARTNERS -->
+  <section class="panel panel-center" id="p-partners">
+    <p class="kicker" data-i18n="partKicker">CLIENTS &amp; PARTENAIRES</p>
+    <h2 data-i18n="partTitle">Collaborer pour construire l'avenir de la fabrication</h2>
+    <p data-i18n="partBody">L'innovation prospère grâce à la collaboration — industries, institutions et organisations qui partagent notre passion pour la fabrication de pointe et le matériel open source.</p>
+  </section>
+
+  <!-- Z5 · PRESS -->
+  <section class="panel panel-side" id="p-press-head">
+    <p class="kicker" data-i18n="pressKicker">PRESSE &amp; ACTUALITÉS</p>
+    <h2 data-i18n="pressTitle">Actualités, mises à jour et histoires</h2>
+    <p data-i18n="pressBody">Nos derniers événements, projets et solutions innovantes.</p>
+  </section>
+
+  <section class="panel panel-card" id="p-press-0">
+    <span class="card-index"><span dir="ltr" data-i18n="press1date">22.10.2025</span></span>
+    <h3 data-i18n="press1t">JellyDoser — Doser avec précision</h3>
+    <p data-i18n="press1d">Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.</p>
+  </section>
+  <section class="panel panel-card" id="p-press-1">
+    <span class="card-index"><span dir="ltr" data-i18n="press2date">22.08.2025</span></span>
+    <h3 data-i18n="press2t">La fabrication numérique face aux défis de l'automobile</h3>
+    <p data-i18n="press2d">Pompage, dosage et dépose d'adhésifs : précision, répétabilité et automatisation dans les procédés modernes d'assemblage — ADM IDEX, SCPDS, JELLY DOSER.</p>
+  </section>
+  <section class="panel panel-card" id="p-press-2">
+    <span class="card-index"><span dir="ltr" data-i18n="press3date">20.05.2025</span></span>
+    <h3 data-i18n="press3t">Machine Building Workshop — Round 2</h3>
+    <p data-i18n="press3d">4 machines CNC construites pour CETTEX · CETIME · CETIBA — la formation par la fabrication.</p>
+  </section>
+
+  <!-- Z6 · CONTACT -->
+  <section class="panel panel-contact" id="p-contact">
+    <p class="kicker" data-i18n="ctKicker">NOUS CONTACTER</p>
+    <h2 data-i18n="ctTitle">Prêt à démarrer votre projet ?</h2>
+    <p data-i18n="ctBody">Pour découvrir ce que FAB619 peut faire pour votre entreprise ou recevoir un devis, contactez-nous.</p>
+
+    <div class="ct-grid">
+      <div class="ct-block">
+        <span class="ct-label" data-i18n="ctPhones">TÉLÉPHONE</span>
+        <a href="tel:+21655336659" dir="ltr">+216 55 336 659</a>
+        <a href="tel:+21654544731" dir="ltr">+216 54 544 731</a>
+      </div>
+      <div class="ct-block">
+        <span class="ct-label" data-i18n="ctNew">NOUVEAUX PROJETS</span>
+        <a href="mailto:alilakais@fab619.tn">alilakais@fab619.tn</a>
+        <span class="ct-label" data-i18n="ct3d">IMPRESSION 3D</span>
+        <a href="mailto:3dprint@fab619.tn">3dprint@fab619.tn</a>
+      </div>
+      <div class="ct-block">
+        <span class="ct-label" data-i18n="ctSupport">QUESTIONS &amp; SUPPORT</span>
+        <a href="mailto:contact@fab619.tn">contact@fab619.tn</a>
+        <div class="ct-socials">
+          <a href="https://www.linkedin.com/company/fab619" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/fab_619" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/fab619" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://github.com/fab619" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="ct-block">
+        <span class="ct-label" data-i18n="ctWorkshop">ADRESSE DE L'ATELIER</span>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=35.716583,10.758278" target="_blank" rel="noopener" data-i18n="ctAddr1">FE/AR 03, Neotex, Fabrique entreprenariale, Monastir, Tunisie</a>
+        <span class="ct-label" data-i18n="ctCorp">ADRESSE DE L'ENTREPRISE</span>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=36.849250,10.199806" target="_blank" rel="noopener" data-i18n="ctAddr2">A8-8, Golden Towers, Centre Urbain Nord, Tunis, Tunisie</a>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="mailto:contact@fab619.tn" data-i18n="ctCta">NOUS ÉCRIRE</a>
+    </div>
+    <p class="footer-line"><span data-i18n="footRights">Tous droits réservés 2025 © FAB619 — Fabrication à la demande</span> · <a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a></p>
+  </section>
+</main>
+
+<div id="spacer" aria-hidden="true"></div>
+
+<script src="/lib/gsap.min.js"></script>
+<script type="importmap">
+{ "imports": { "three": "/lib/three.module.js", "three/addons/": "/lib/jsm/" } }
+</script>
+<script src="/js/i18n.js"></script>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

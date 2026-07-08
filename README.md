@@ -1,41 +1,42 @@
-# FAB619 — L'Usine Cinématique · المصنع السينمائي
+# FAB619 — Fabrication à la demande · فاب ٦١٩
 
-A cinematic, scroll-driven 3D reimagining of [fab619.tn](https://www.fab619.tn/fr) — the Tunisian
+A bilingual (FR ⇄ AR/RTL) redesign of [fab619.tn](https://www.fab619.tn/fr) — the Tunisian
 engineering design office for custom machines, automation and digital fabrication.
 
-The visitor rides a camera dolly through a dark factory hall at night: portal gantries ignite as
-you pass, the original site's hero video plays on a monumental video wall, services line up as
-lit stations along a production line, projects hang in a machine gallery, partner logos form a
-light tunnel, and the journey ends in the office — ready to start a project.
+**Two experiences, one site:**
 
-**Fully bilingual French ⇄ Arabic (RTL)** with a cinematic industrial roller-shutter transition.
+- **`/` — the simple template (default).** Faithful to the original site's structure: hero
+  slideshow (video + the 4 original slides), who-we-are, 6 service cards, projects carousel,
+  partner logo marquee, press, contact. Normal scrolling, light theme, A-grade usability —
+  with tasteful animations: scroll reveals, slideshow crossfade with Ken Burns, hover lifts,
+  scrollspy nav, and the industrial roller-shutter language transition.
+- **`/cinematic.html` — the 3D experience.** A scroll-driven camera dolly through a dark
+  factory hall: portal gantries ignite as you pass, the hero video plays on a monumental
+  video wall, projects hang in a machine gallery, partner logos form a light tunnel.
 
-## Experience map
+Both share the same FR/AR dictionary; the **عربي / FR** button closes a factory roller door
+(slats + laser + glowing «فاب ٦١٩»), flips `lang`/`dir` and typography to IBM Plex Sans Arabic,
+and reopens onto the mirrored RTL layout. Choice persists in `localStorage`.
 
-| # | Zone | Content |
-|---|------|---------|
-| 01 | L'Atelier · الورشة | Video wall (original hero video) + 4 slideshow banners |
-| 02 | Qui sommes-nous · من نحن | Who-we-are triptych (original photography) |
-| 03 | La chaîne de production · خطّ الإنتاج | 6 service stations with the site's own icons |
-| 04 | La galerie des machines · معرض الآلات | 5 flagship projects (SCPDS, JELLY DOSER, JellyEdge, ADM IDEX V2) + archive arch |
-| 05 | Le tunnel des partenaires · نفق الشركاء | 23 client/partner plaques |
-| 06 | La presse · الصحافة | 3 press lightboxes with real article dates |
-| 07 | Le bureau · المكتب | Contact chamber — phones, emails, both addresses, socials |
+## Sections (both experiences)
 
-## Language transition — the signature move
-
-Clicking **عربي / FR** closes a factory roller door (10 slats + laser line + glowing
-«فاب ٦١٩» wordmark), swaps the entire DOM to the other language (`lang`, `dir`, typography
-system → IBM Plex Sans Arabic), fires a camera FOV-punch-and-roll whip in the 3D scene, then
-lifts the shutter onto the mirrored RTL layout. Choice persists in `localStorage`.
+| Simple site | Cinematic zone | Content |
+|---|---|---|
+| Accueil · الرئيسية | 01 L'Atelier | Original hero video + 4 slideshow slides |
+| À propos · من نحن | 02 Qui sommes-nous | Who-we-are collage (original photography) |
+| Services · الخدمات | 03 La chaîne | 6 services with the site's own icons + images |
+| Projets · المشاريع | 04 La galerie | SCPDS, JELLY DOSER, JellyEdge ×2, ADM IDEX V2 + atelier photo strip |
+| Partenaires · الشركاء | 05 Le tunnel | 23 client/partner logos (CSS marquee / 3D tunnel) |
+| Presse · الصحافة | 06 La presse | 3 real articles with dates, linked to fab619.tn |
+| Contact · اتصل بنا | 07 Le bureau | Phones, emails, both addresses, socials |
 
 ## Tech
 
-- **Three.js r160** (local, no CDN) + UnrealBloom post-processing
-- Scroll-driven camera on paired CatmullRom rails (position + gaze), sampled by hall depth `z`
-  so overlay copy, ignitions and camera always agree
-- GSAP (local) for the shutter timeline and nav glides
-- Plain HTML/CSS overlay — CSS logical properties give free RTL mirroring
+- Simple site: semantic HTML + CSS (logical properties → free RTL) + ~120 lines of vanilla JS
+  (slideshow, IntersectionObserver reveals, scrollspy, marquee, RTL-aware carousel)
+- Cinematic page: **Three.js r160** (local, no CDN) + UnrealBloom; camera on paired CatmullRom
+  rails sampled by hall depth `z`
+- GSAP (local) for the shutter timeline
 - Node.js static server with HTTP Range support (video streaming), port **9105**
 - Self-hosted fonts: Space Grotesk, Inter, IBM Plex Sans Arabic (WOFF2)
 
