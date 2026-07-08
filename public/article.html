@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAB619 — Article</title>
+<meta name="description" content="Actualités FAB619 — machines personnalisées, automatisation et fabrication numérique.">
+<link rel="icon" type="image/svg+xml" href="/assets/logo/fab-619-mobile-logo.svg">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="lang-fr" data-keep-title="1">
+
+<div id="shutter" aria-hidden="true">
+  <div class="shutter-slats"></div>
+  <div class="shutter-brand" id="shutterBrand">فاب ٦١٩</div>
+  <div class="shutter-laser"></div>
+</div>
+
+<header id="nav">
+  <a class="nav-logo" href="/#accueil" aria-label="FAB619 — accueil">
+    <img src="/assets/logo/fab-619-logo.svg" alt="FAB619" width="115" height="44">
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+    <a href="/#accueil"     data-i18n="navHome">Accueil</a>
+    <a href="/#apropos"     data-i18n="navAbout">À propos</a>
+    <a href="/#services"    data-i18n="navServices">Services</a>
+    <a href="/#projets"     data-i18n="navProjects">Projets</a>
+    <a href="/#presse"      data-i18n="navPress">Presse</a>
+    <a href="/#contact"     data-i18n="navContact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <div class="lang-switch" role="group" data-i18n-aria="langGroupLabel" aria-label="Choix de la langue">
+      <button data-lang="fr" aria-pressed="true">FR</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="ar" aria-pressed="false" lang="ar">ع</button>
+    </div>
+    <button id="burger" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="menuLabel" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="article-main">
+  <div class="wrap article-wrap">
+    <p><a class="back-link" href="/#presse" data-i18n="backLabel">Retour aux actualités</a></p>
+
+    <article id="articleBox" aria-live="polite">
+      <p class="press-status" data-i18n="loadingLabel">Chargement…</p>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <p><span data-i18n="footRights">Tous droits réservés 2025 © FAB619 — Fabrication à la demande</span></p>
+  <p><a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a></p>
+</footer>
+
+<script src="/lib/gsap.min.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function () {
+  'use strict';
+  const lang = () => window.FAB_LANG || 'fr';
+  const dict = () => window.FAB_I18N.dicts[lang()];
+  const slug = new URLSearchParams(location.search).get('slug') || '';
+  let article = null;
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+
+  function fmtDate(iso) {
+    try {
+      const locale = lang() === 'ar' ? 'ar-TN-u-nu-arab' : lang() === 'en' ? 'en-GB' : 'fr-FR';
+      return new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date(iso + 'T12:00:00'));
+    } catch { return iso; }
+  }
+
+  function render() {
+    const box = document.getElementById('articleBox');
+    const d = dict();
+    box.textContent = '';
+    if (!article) {
+      const p = document.createElement('p');
+      p.className = 'press-status';
+      p.textContent = d.notFound;
+      box.appendChild(p);
+      return;
+    }
+    const t = article.i18n[lang()] || article.i18n[article.source];
+    document.title = t.title + ' — FAB619';
+
+    const time = document.createElement('time');
+    time.className = 'article-date';
+    time.dateTime = article.date;
+    time.textContent = fmtDate(article.date);
+
+    const h1 = document.createElement('h1');
+    h1.className = 'article-title';
+    h1.textContent = t.title;
+
+    box.append(time, h1);
+
+    if (article.image) {
+      const img = document.createElement('img');
+      img.className = 'article-hero';
+      img.src = article.image;
+      img.alt = t.alt || t.title;
+      box.appendChild(img);
+    }
+    for (const para of String(t.body).split(/\n{2,}/)) {
+      const p = document.createElement('p');
+      p.className = 'article-para';
+      p.textContent = para;
+      box.appendChild(p);
+    }
+    if (article.externalUrl) {
+      const a = document.createElement('a');
+      a.className = 'proj-more';
+      a.href = article.externalUrl;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = d.originalArticle;
+      box.appendChild(a);
+    }
+  }
+
+  fetch('/api/articles/' + encodeURIComponent(slug))
+    .then((r) => (r.ok ? r.json() : null))
+    .then((a) => { article = a; render(); })
+    .catch(() => { article = null; render(); });
+  addEventListener('fab:lang', render);
+})();
+</script>
+</body>
+</html>

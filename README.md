@@ -1,62 +1,78 @@
 # FAB619 — Fabrication à la demande · فاب ٦١٩
 
-A bilingual (FR ⇄ AR/RTL) redesign of [fab619.tn](https://www.fab619.tn/fr) — the Tunisian
-engineering design office for custom machines, automation and digital fabrication.
+A trilingual (**FR / EN / AR-RTL**) redesign of [fab619.tn](https://www.fab619.tn/fr) — the
+Tunisian engineering design office for custom machines, automation and digital fabrication —
+with a **self-hosted news system**: write an article once in any language, it is
+auto-translated into the other two, reviewed in an admin panel, and published to the site.
 
-**Two experiences, one site:**
+## The site (`/`)
 
-- **`/` — the simple template (default).** Faithful to the original site's structure: hero
-  slideshow (video + the 4 original slides), who-we-are, 6 service cards, projects carousel,
-  partner logo marquee, press, contact. Normal scrolling, light theme, A-grade usability —
-  with tasteful animations: scroll reveals, slideshow crossfade with Ken Burns, hover lifts,
-  scrollspy nav, and the industrial roller-shutter language transition.
-- **`/cinematic.html` — the 3D experience.** A scroll-driven camera dolly through a dark
-  factory hall: portal gantries ignite as you pass, the hero video plays on a monumental
-  video wall, projects hang in a machine gallery, partner logos form a light tunnel.
+Faithful to the original site's structure: hero slideshow (video + the 4 original slides),
+who-we-are, stats band with count-up, 6 service cards, projects carousel, 23-partner logo
+marquee, dynamic press grid, contact. Light theme, normal scrolling, A-grade usability —
+with tasteful motion: scroll reveals, slideshow crossfade with Ken Burns, word-rise headline,
+scroll progress bar, card tilt, magnetic CTAs, scrollspy nav.
 
-Both share the same FR/AR dictionary; the **عربي / FR** button closes a factory roller door
-(slats + laser + glowing «فاب ٦١٩»), flips `lang`/`dir` and typography to IBM Plex Sans Arabic,
-and reopens onto the mirrored RTL layout. Choice persists in `localStorage`.
+**Language switch (FR / EN / ع)** closes an industrial roller door (slats + laser + glowing
+«فاب ٦١٩»), flips `lang`/`dir` and typography to IBM Plex Sans Arabic, and reopens onto the
+mirrored layout. CSS logical properties make RTL free. Choice persists in `localStorage`
+across every page.
 
-## Sections (both experiences)
+## The news system
 
-| Simple site | Cinematic zone | Content |
+- **`/admin.html`** — token-gated editorial space (header `X-Admin-Token`, set via the
+  `ADMIN_TOKEN` env var; demo default `fab619`). Write **title / excerpt / body / image alt**
+  in one language, pick an illustration from the site's own library or upload one (≤ 3 MB,
+  stored under `/assets/uploads/`), then one click translates into the two other languages.
+  Review tabs (FR / EN / AR) let the editor correct each version before publishing.
+  Published articles can be edited, retranslated or deleted from the same page.
+- **`/article.html?slug=…`** — the public article page, rendered in the visitor's language
+  with localized dates (Arabic-Indic numerals in AR).
+- **Press grid on the homepage** — the 6 most recent articles, live from the API, re-rendered
+  on every language switch.
+
+### API (`server.js`, zero dependencies)
+
+| Route | Auth | Purpose |
 |---|---|---|
-| Accueil · الرئيسية | 01 L'Atelier | Original hero video + 4 slideshow slides |
-| À propos · من نحن | 02 Qui sommes-nous | Who-we-are collage (original photography) |
-| Services · الخدمات | 03 La chaîne | 6 services with the site's own icons + images |
-| Projets · المشاريع | 04 La galerie | SCPDS, JELLY DOSER, JellyEdge ×2, ADM IDEX V2 + atelier photo strip |
-| Partenaires · الشركاء | 05 Le tunnel | 23 client/partner logos (CSS marquee / 3D tunnel) |
-| Presse · الصحافة | 06 La presse | 3 real articles with dates, linked to fab619.tn |
-| Contact · اتصل بنا | 07 Le bureau | Phones, emails, both addresses, socials |
+| `GET /api/articles` | — | list articles (newest first) |
+| `GET /api/articles/:slug` | — | one article (all 3 languages) |
+| `POST /api/articles` | token | create; missing languages auto-filled by translation |
+| `PUT /api/articles/:id` | token | edit; `retranslate: true` refills from source language |
+| `DELETE /api/articles/:id` | token | delete |
+| `POST /api/translate` | token | translate a text `{text, from, to}` |
+| `POST /api/upload` | token | upload a base64 image → `/assets/uploads/` |
+
+Translation chain: Google Translate (unofficial `gtx` endpoint) → MyMemory fallback →
+graceful passthrough (the editor can always fix by hand in the review tabs). Articles are
+stored in `data/articles.json` — no database.
 
 ## Tech
 
-- Simple site: semantic HTML + CSS (logical properties → free RTL) + ~120 lines of vanilla JS
-  (slideshow, IntersectionObserver reveals, scrollspy, marquee, RTL-aware carousel)
-- Cinematic page: **Three.js r160** (local, no CDN) + UnrealBloom; camera on paired CatmullRom
-  rails sampled by hall depth `z`
-- GSAP (local) for the shutter timeline
-- Node.js static server with HTTP Range support (video streaming), port **9105**
+- Semantic HTML + CSS (logical properties, `clamp()` fluid type) + vanilla JS
+- GSAP (local) for the shutter timeline and magnetic buttons — no other libraries
+- Node.js server: static files with HTTP Range support (video streaming) + JSON API, port **9105**
 - Self-hosted fonts: Space Grotesk, Inter, IBM Plex Sans Arabic (WOFF2)
 
 ## Accessibility (WCAG AA pass)
 
 - Text contrast ≥ 4.5:1 (red accent lightened to `#f56b6b` for text on dark)
-- 44 px minimum touch targets (nav, language button, CTAs)
+- 44 px minimum touch targets (nav, language switch, CTAs)
 - Visible `:focus-visible` outlines, real `<button>`/`<a>` semantics, sequential headings
-- `prefers-reduced-motion`: instant camera, simplified language switch, no idle sway
+- `prefers-reduced-motion`: no counters/tilt/word-rise, simplified language switch
 - Correct `lang`/`dir` swapping; phone numbers kept LTR inside RTL layout
-- Canvas and decorative HUD `aria-hidden`; loader `role="status"`
+- Admin forms: labelled fields, `role="alert"` errors, `aria-live` toasts, real tabs with
+  `aria-selected`; press grid announces updates via `aria-live`
 
 ## Run
 
 ```bash
 node server.js
-# → http://localhost:9105
+# → http://localhost:9105          (site)
+# → http://localhost:9105/admin.html  (editorial space)
 ```
 
-Debug: `window.__jump(p)` jumps to any progress point `p ∈ [0,1]` (e.g. `__jump(0.76)` = partner tunnel).
+Set a strong `ADMIN_TOKEN` environment variable before hosting publicly.
 
 ## Credits
 
