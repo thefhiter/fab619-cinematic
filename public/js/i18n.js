@@ -1,25 +1,17 @@
-/* ═══ FAB619 — i18n FR ⇄ AR with cinematic shutter transition ═══ */
+/* ═══ FAB619 — i18n FR / EN / AR with industrial shutter transition ═══ */
 (function () {
   'use strict';
 
   const FR = {
-    loaderText: "INITIALISATION DE L'ATELIER",
+    skipLink: 'Aller au contenu',
     navHome: 'Accueil', navAbout: 'À propos', navServices: 'Services',
     navProjects: 'Projets', navPartners: 'Partenaires', navPress: 'Presse', navContact: 'Contact',
-    scrollHint: 'DÉFILER POUR ENTRER',
-    skipLink: 'Aller au contenu',
-    heroBodyShort: "Machines avancées, systèmes d'automatisation et fabrication numérique — du concept au prototype.",
-    altAbout1: "Banc d'assemblage électronique dans l'atelier FAB619",
-    altAbout2: "Machines en cours d'assemblage dans l'atelier",
-    altAbout3: "Détail d'un système de dosage FAB619",
-    viewProject: 'Voir le projet', readMore: "Lire l'article",
-    atelierTitle: "L'atelier en images",
     menuLabel: 'Menu', prevLabel: 'Précédent', nextLabel: 'Suivant', slideLabel: 'Diapositive',
-    cineLink: 'Expérience 3D cinématique',
+    langGroupLabel: 'Choix de la langue',
 
     heroKicker: 'BIENVENUE CHEZ FAB619',
     heroTitle: 'Fabrication<br>à la demande',
-    heroBody: "Un bureau d'études spécialisé dans les machines avancées, les systèmes d'automatisation et la fabrication numérique. Du concept au prototype — des solutions efficaces, testées, optimisées pour la productivité, la qualité et l'évolutivité industrielle.",
+    heroBodyShort: "Machines avancées, systèmes d'automatisation et fabrication numérique — du concept au prototype.",
     heroCta: 'DÉCOUVRIR', heroCta2: 'DEVIS PROJET',
 
     aboutKicker: 'QUI SOMMES-NOUS ?',
@@ -27,6 +19,12 @@
     aboutBody1: "Nous concevons et développons des machines sur mesure, des systèmes d'automatisation et des produits intelligents qui comblent le fossé entre l'innovation et la performance industrielle.",
     aboutBody2: "Machines CNC personnalisées, appareils IoT, cartes PCB, fabrication numérique ou formations en atelier — des technologies pratiques et évolutives, pour un impact réel et des résultats mesurables.",
     aboutBody3: "Notre équipe multidisciplinaire réunit mécanique, électronique, logiciel machine et fabrication numérique — du prototypage à la production.",
+    altAbout1: "Banc d'assemblage électronique dans l'atelier FAB619",
+    altAbout2: "Machines en cours d'assemblage dans l'atelier",
+    altAbout3: "Détail d'un système de dosage FAB619",
+
+    statPartners: 'Clients & partenaires', statServices: 'Services intégrés',
+    statProjects: 'Projets en vitrine', statSites: 'Sites — Monastir & Tunis',
 
     servKicker: 'NOS SERVICES',
     servTitle: 'Du concept au produit final',
@@ -51,6 +49,8 @@
     proj4d: 'Machine CNC de dépose nouvelle génération — châssis inox, double tête IDEX indépendante, optimisée pour les matériaux visqueux.',
     proj5tag: 'PLATEFORME · FORMATION',
     proj5d: "Plateforme Edutech dédiée à l'apprentissage pratique des technologies Industrie 4.0 — pour universités et centres de formation.",
+    viewProject: 'Voir le projet',
+    atelierTitle: "L'atelier en images",
 
     partKicker: 'CLIENTS & PARTENAIRES',
     partTitle: "Collaborer pour construire l'avenir de la fabrication",
@@ -59,12 +59,9 @@
     pressKicker: 'PRESSE & ACTUALITÉS',
     pressTitle: 'Actualités, mises à jour et histoires',
     pressBody: 'Nos derniers événements, projets et solutions innovantes.',
-    press1date: '22.10.2025', press1t: 'JellyDoser — Doser avec précision',
-    press1d: 'Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.',
-    press2date: '22.08.2025', press2t: "La fabrication numérique face aux défis de l'automobile",
-    press2d: "Pompage, dosage et dépose d'adhésifs : précision, répétabilité et automatisation dans les procédés modernes d'assemblage — ADM IDEX, SCPDS, JELLY DOSER.",
-    press3date: '20.05.2025', press3t: 'Machine Building Workshop — Round 2',
-    press3d: '4 machines CNC construites pour CETTEX · CETIME · CETIBA — la formation par la fabrication.',
+    readMore: "Lire l'article", pressEmpty: 'Aucun article pour le moment — revenez bientôt.',
+    backLabel: 'Retour aux actualités', originalArticle: 'Article original sur fab619.tn',
+    loadingLabel: 'Chargement…', notFound: 'Article introuvable.',
 
     ctKicker: 'NOUS CONTACTER',
     ctTitle: 'Prêt à démarrer votre projet ?',
@@ -76,30 +73,93 @@
     ctAddr2: 'A8-8, Golden Towers, Centre Urbain Nord, Tunis, Tunisie',
     ctCta: 'NOUS ÉCRIRE',
     footRights: 'Tous droits réservés 2025 © FAB619 — Fabrication à la demande',
-
-    zones: ['L’ATELIER', 'QUI SOMMES-NOUS', 'LA CHAÎNE DE PRODUCTION', 'LA GALERIE DES MACHINES', 'LE TUNNEL DES PARTENAIRES', 'LA PRESSE', 'LE BUREAU'],
-    zoneNums: ['01', '02', '03', '04', '05', '06', '07'],
     docTitle: 'FAB619 — Fabrication à la demande | Machines personnalisées, automatisation et fabrication numérique',
   };
 
+  const EN = {
+    skipLink: 'Skip to content',
+    navHome: 'Home', navAbout: 'About', navServices: 'Services',
+    navProjects: 'Projects', navPartners: 'Partners', navPress: 'Press', navContact: 'Contact',
+    menuLabel: 'Menu', prevLabel: 'Previous', nextLabel: 'Next', slideLabel: 'Slide',
+    langGroupLabel: 'Language selection',
+
+    heroKicker: 'WELCOME TO FAB619',
+    heroTitle: 'Fabrication<br>on demand',
+    heroBodyShort: 'Advanced machines, automation systems and digital fabrication — from concept to prototype.',
+    heroCta: 'DISCOVER', heroCta2: 'PROJECT QUOTE',
+
+    aboutKicker: 'WHO WE ARE',
+    aboutTitle: 'Innovation, from concept to integration',
+    aboutBody1: 'We design and develop custom machines, automation systems and smart products that bridge the gap between innovation and industrial performance.',
+    aboutBody2: 'Custom CNC machines, IoT devices, PCBs, digital fabrication or hands-on workshop training — practical, scalable technologies for real impact and measurable results.',
+    aboutBody3: 'Our multidisciplinary team combines mechanics, electronics, machine software and digital fabrication — from prototyping to production.',
+    altAbout1: 'Electronics assembly bench in the FAB619 workshop',
+    altAbout2: 'Machines being assembled in the workshop',
+    altAbout3: 'Detail of a FAB619 dosing system',
+
+    statPartners: 'Clients & partners', statServices: 'Integrated services',
+    statProjects: 'Showcase projects', statSites: 'Sites — Monastir & Tunis',
+
+    servKicker: 'OUR SERVICES',
+    servTitle: 'From concept to final product',
+    servBody: 'A wide range of innovative fabrication services, along a single production line.',
+    s1t: 'Custom machines', s1d: 'Machine development · Automation systems · Advanced robotics',
+    s2t: '3D printing & CNC machining', s2d: 'On-demand fabrication · Rapid prototyping · Custom production',
+    s3t: 'IoT & Electronics', s3d: 'Electronic circuits · PCB design & IoT integration · Embedded software',
+    s4t: 'Hardware design', s4d: 'Product design · Hardware engineering · Prototyping · Electronics integration',
+    s5t: 'Machine software', s5d: 'Control algorithms · Real-time monitoring · Custom software',
+    s6t: 'Workshops & Training', s6d: 'Technical documentation · Hands-on workshops · Training sessions',
+
+    projKicker: 'OUR PROJECTS',
+    projTitle: 'The machine gallery',
+    projBody: 'Our custom solutions in action — from smart machines to industrial innovations.',
+    proj1tag: 'PUMPING · PNEUMATIC',
+    proj1d: 'Pneumatic pumping station for the continuous feeding of liquid adhesives and low-viscosity materials — high-precision diaphragm pump.',
+    proj2tag: 'DOSING · PRECISION',
+    proj2d: 'Smart dispensing and dosing system for applications demanding high precision, high throughput and perfect repeatability.',
+    proj3tag: 'EDUTECH · INDUSTRY 4.0',
+    proj3d: 'Four training models covering the pillars of smart industry: automation, IoT, communication and production.',
+    proj4tag: 'CNC · STAINLESS',
+    proj4d: 'New-generation CNC dispensing machine — stainless-steel chassis, independent IDEX dual head, optimised for viscous materials.',
+    proj5tag: 'PLATFORM · TRAINING',
+    proj5d: 'Edutech platform dedicated to hands-on learning of Industry 4.0 technologies — for universities and training centres.',
+    viewProject: 'View project',
+    atelierTitle: 'The workshop in pictures',
+
+    partKicker: 'CLIENTS & PARTNERS',
+    partTitle: 'Collaborating to build the future of manufacturing',
+    partBody: 'Innovation thrives on collaboration — industries, institutions and organisations that share our passion for cutting-edge fabrication and open-source hardware.',
+
+    pressKicker: 'PRESS & NEWS',
+    pressTitle: 'News, updates and stories',
+    pressBody: 'Our latest events, projects and innovative solutions.',
+    readMore: 'Read the article', pressEmpty: 'No articles yet — check back soon.',
+    backLabel: 'Back to news', originalArticle: 'Original article on fab619.tn',
+    loadingLabel: 'Loading…', notFound: 'Article not found.',
+
+    ctKicker: 'CONTACT US',
+    ctTitle: 'Ready to start your project?',
+    ctBody: 'To find out what FAB619 can do for your business, or to get a quote, get in touch.',
+    ctPhones: 'PHONE', ctNew: 'NEW PROJECTS', ct3d: '3D PRINTING',
+    ctSupport: 'QUESTIONS & SUPPORT',
+    ctWorkshop: 'WORKSHOP ADDRESS', ctCorp: 'COMPANY ADDRESS',
+    ctAddr1: 'FE/AR 03, Neotex, Entrepreneurial factory, Monastir, Tunisia',
+    ctAddr2: 'A8-8, Golden Towers, Centre Urbain Nord, Tunis, Tunisia',
+    ctCta: 'WRITE TO US',
+    footRights: 'All rights reserved 2025 © FAB619 — Fabrication on demand',
+    docTitle: 'FAB619 — Fabrication on demand | Custom machines, automation and digital fabrication',
+  };
+
   const AR = {
-    loaderText: 'جارٍ تشغيل الورشة',
+    skipLink: 'الانتقال إلى المحتوى',
     navHome: 'الرئيسية', navAbout: 'من نحن', navServices: 'الخدمات',
     navProjects: 'المشاريع', navPartners: 'الشركاء', navPress: 'الصحافة', navContact: 'اتصل بنا',
-    scrollHint: 'مرّر للدخول',
-    skipLink: 'الانتقال إلى المحتوى',
-    heroBodyShort: 'آلات متقدّمة وأنظمة أتمتة وتصنيع رقمي — من الفكرة إلى النموذج الأوّلي.',
-    altAbout1: 'طاولة تجميع إلكتروني في ورشة فاب ٦١٩',
-    altAbout2: 'آلات قيد التجميع في الورشة',
-    altAbout3: 'تفاصيل نظام جرعات من فاب ٦١٩',
-    viewProject: 'شاهد المشروع', readMore: 'اقرأ المقال',
-    atelierTitle: 'الورشة في صور',
     menuLabel: 'القائمة', prevLabel: 'السابق', nextLabel: 'التالي', slideLabel: 'شريحة',
-    cineLink: 'التجربة السينمائية ثلاثية الأبعاد',
+    langGroupLabel: 'اختيار اللغة',
 
     heroKicker: 'مرحبًا بكم في فاب ٦١٩',
     heroTitle: 'التصنيع<br>عند الطلب',
-    heroBody: 'مكتب دراسات متخصّص في الآلات المتقدّمة وأنظمة الأتمتة والتصنيع الرقمي. من الفكرة إلى النموذج الأوّلي — حلول فعّالة ومُختبَرة، محسَّنة للإنتاجية والجودة وقابلية التوسّع الصناعي.',
+    heroBodyShort: 'آلات متقدّمة وأنظمة أتمتة وتصنيع رقمي — من الفكرة إلى النموذج الأوّلي.',
     heroCta: 'اكتشِف', heroCta2: 'عرض سعر لمشروعك',
 
     aboutKicker: 'من نحن؟',
@@ -107,6 +167,12 @@
     aboutBody1: 'نصمّم ونطوّر آلات حسب الطلب وأنظمة أتمتة ومنتجات ذكية تسدّ الفجوة بين الابتكار والأداء الصناعي.',
     aboutBody2: 'آلات CNC مخصّصة، أجهزة إنترنت الأشياء، لوحات إلكترونية، تصنيع رقمي وتكوين في الورشات — تقنيات عملية وقابلة للتطوير، لأثر حقيقي ونتائج ملموسة.',
     aboutBody3: 'فريقنا متعدّد الاختصاصات يجمع الهندسة الميكانيكية والإلكترونيات وبرمجيات الآلات والتصنيع الرقمي — من النمذجة الأوّلية إلى الإنتاج.',
+    altAbout1: 'طاولة تجميع إلكتروني في ورشة فاب ٦١٩',
+    altAbout2: 'آلات قيد التجميع في الورشة',
+    altAbout3: 'تفاصيل نظام جرعات من فاب ٦١٩',
+
+    statPartners: 'حرفاء وشركاء', statServices: 'خدمات متكاملة',
+    statProjects: 'مشاريع في الواجهة', statSites: 'موقعان — المنستير وتونس',
 
     servKicker: 'خدماتنا',
     servTitle: 'من الفكرة إلى المنتج النهائي',
@@ -131,6 +197,8 @@
     proj4d: 'آلة CNC للدفق من الجيل الجديد — هيكل من الفولاذ المقاوم للصدأ، رأسان مستقلّان IDEX، محسَّنة للموادّ اللزجة.',
     proj5tag: 'منصّة · تكوين',
     proj5d: 'منصّة تعليمية تقنية مخصّصة للتعلّم التطبيقي لتقنيات الصناعة 4.0 — للجامعات ومراكز التكوين.',
+    viewProject: 'شاهد المشروع',
+    atelierTitle: 'الورشة في صور',
 
     partKicker: 'حرفاؤنا وشركاؤنا',
     partTitle: 'نتعاون لبناء مستقبل التصنيع',
@@ -139,12 +207,9 @@
     pressKicker: 'الصحافة والأخبار',
     pressTitle: 'أخبار ومستجدّات وقصص',
     pressBody: 'آخر فعالياتنا ومشاريعنا وحلولنا المبتكرة.',
-    press1date: '٢٢.١٠.٢٠٢٥', press1t: 'جيلي دوزر — جرعات بدقّة متناهية',
-    press1d: 'عطور، زيوت، مستحضرات تجميل أو عصائر حرفية: حلول جرعات وتعبئة حسب الطلب، مصمّمة للمؤسّسات الصغيرة.',
-    press2date: '٢٢.٠٨.٢٠٢٥', press2t: 'التصنيع الرقمي في مواجهة تحدّيات صناعة السيّارات',
-    press2d: 'ضخّ اللواصق وجرعاتها ودفقها: الدقّة والتكرار والأتمتة في عمليات التجميع الحديثة — ADM IDEX وSCPDS وJELLY DOSER.',
-    press3date: '٢٠.٠٥.٢٠٢٥', press3t: 'ورشة بناء الآلات — الجولة الثانية',
-    press3d: 'أربع آلات CNC صُنعت لفائدة CETTEX · CETIME · CETIBA — التكوين عن طريق التصنيع.',
+    readMore: 'اقرأ المقال', pressEmpty: 'لا توجد مقالات بعد — عودوا قريبًا.',
+    backLabel: 'العودة إلى الأخبار', originalArticle: 'المقال الأصلي على fab619.tn',
+    loadingLabel: 'جارٍ التحميل…', notFound: 'المقال غير موجود.',
 
     ctKicker: 'اتصلوا بنا',
     ctTitle: 'مستعدّون لإطلاق مشروعكم؟',
@@ -156,14 +221,12 @@
     ctAddr2: 'A8-8، الأبراج الذهبية، المركز العمراني الشمالي، تونس العاصمة',
     ctCta: 'راسلونا',
     footRights: 'جميع الحقوق محفوظة ٢٠٢٥ © فاب ٦١٩ — التصنيع عند الطلب',
-
-    zones: ['الورشة', 'من نحن', 'خطّ الإنتاج', 'معرض الآلات', 'نفق الشركاء', 'الصحافة', 'المكتب'],
-    zoneNums: ['٠١', '٠٢', '٠٣', '٠٤', '٠٥', '٠٦', '٠٧'],
     docTitle: 'فاب ٦١٩ — التصنيع عند الطلب | آلات مخصّصة وأتمتة وتصنيع رقمي',
   };
 
-  const DICTS = { fr: FR, ar: AR };
-  let current = localStorage.getItem('fab619-lang') || 'fr';
+  const DICTS = { fr: FR, en: EN, ar: AR };
+  const saved = localStorage.getItem('fab619-lang');
+  let current = DICTS[saved] ? saved : 'fr';
   let transitioning = false;
 
   function applyDict(lang) {
@@ -186,25 +249,28 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.body.classList.toggle('lang-ar', lang === 'ar');
-    document.body.classList.toggle('lang-fr', lang === 'fr');
-    document.title = d.docTitle;
-    const btnText = document.getElementById('langBtnText');
-    const btn = document.getElementById('langBtn');
-    if (btnText) btnText.textContent = lang === 'fr' ? 'عربي' : 'FR';
-    if (btn) btn.setAttribute('aria-label', lang === 'fr' ? 'التبديل إلى العربية' : 'Passer au français');
+    if (d.docTitle && !document.body.dataset.keepTitle) document.title = d.docTitle;
+    document.querySelectorAll('.lang-switch button').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
     window.FAB_LANG = lang;
     window.dispatchEvent(new CustomEvent('fab:lang', { detail: { lang } }));
   }
 
-  /* factory roller-door shutter: close → swap language (+3D whip) → open */
-  function cinematicSwitch() {
-    if (transitioning) return;
-    transitioning = true;
-    const target = current === 'fr' ? 'ar' : 'fr';
+  /* factory roller-door wipe between languages */
+  function cinematicSwitch(target) {
+    if (transitioning || target === current || !DICTS[target]) return;
     const shutter = document.getElementById('shutter');
-    const brand = document.getElementById('shutterBrand');
-    const slatsWrap = shutter.querySelector('.shutter-slats');
+    const commit = () => {
+      applyDict(target);
+      current = target;
+      localStorage.setItem('fab619-lang', target);
+    };
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!shutter || reduced || !window.gsap) { commit(); return; }
 
+    transitioning = true;
+    const slatsWrap = shutter.querySelector('.shutter-slats');
     if (!slatsWrap.children.length) {
       for (let i = 0; i < 10; i++) {
         const s = document.createElement('div');
@@ -214,20 +280,10 @@
     }
     const slats = shutter.querySelectorAll('.shutter-slat');
     const laser = shutter.querySelector('.shutter-laser');
+    const brand = document.getElementById('shutterBrand');
     brand.textContent = target === 'ar' ? 'فاب ٦١٩' : 'FAB619';
-    brand.style.fontFamily = target === 'ar'
-      ? "'IBM Plex Sans Arabic', sans-serif" : "'Space Grotesk', sans-serif";
+    brand.style.fontFamily = target === 'ar' ? "'IBM Plex Sans Arabic', sans-serif" : "'Space Grotesk', sans-serif";
     shutter.classList.add('active');
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || !window.gsap) {
-      applyDict(target);
-      current = target;
-      localStorage.setItem('fab619-lang', target);
-      shutter.classList.remove('active');
-      transitioning = false;
-      return;
-    }
 
     const cleanup = () => {
       shutter.classList.remove('active');
@@ -235,29 +291,23 @@
       gsap.set([brand, laser], { opacity: 0 });
       transitioning = false;
     };
-    const tl = gsap.timeline({ onComplete: cleanup, onInterrupt: cleanup });
-
-    // CLOSE — slats drop like a roller door
-    tl.set(slats, { transformOrigin: 'top center' })
-      .to(slats, { scaleY: 1.02, duration: 0.42, stagger: 0.035, ease: 'power3.in' })
-      .to(laser, { opacity: 1, scaleX: 1, duration: 0.3, ease: 'power2.out' }, '-=0.15')
-      .to(brand, { opacity: 1, scale: 1.06, duration: 0.4, ease: 'power2.out' }, '-=0.2')
-      .add(() => {
-        applyDict(target);
-        current = target;
-        localStorage.setItem('fab619-lang', target);
-        if (window.FAB_onLangWhip) window.FAB_onLangWhip(target); // 3D camera whip hook
-      })
-      .to(brand, { opacity: 0, scale: 0.96, duration: 0.34, ease: 'power2.in' }, '+=0.62')
-      .to(laser, { opacity: 0, scaleX: 0, duration: 0.26 }, '<')
-      // OPEN — slats lift bottom-up
+    gsap.timeline({ onComplete: cleanup, onInterrupt: cleanup })
+      .set(slats, { transformOrigin: 'top center' })
+      .to(slats, { scaleY: 1.02, duration: 0.28, stagger: 0.02, ease: 'power3.in' })
+      .to(laser, { opacity: 1, scaleX: 1, duration: 0.18, ease: 'power2.out' }, '-=0.1')
+      .to(brand, { opacity: 1, scale: 1.05, duration: 0.24, ease: 'power2.out' }, '-=0.12')
+      .add(commit)
+      .to(brand, { opacity: 0, scale: 0.97, duration: 0.2, ease: 'power2.in' }, '+=0.3')
+      .to(laser, { opacity: 0, scaleX: 0, duration: 0.16 }, '<')
       .set(slats, { transformOrigin: 'bottom center' })
-      .to(slats, { scaleY: 0, duration: 0.5, stagger: { each: 0.035, from: 'end' }, ease: 'power3.out' });
+      .to(slats, { scaleY: 0, duration: 0.32, stagger: { each: 0.02, from: 'end' }, ease: 'power3.out' });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     applyDict(current);
-    document.getElementById('langBtn').addEventListener('click', cinematicSwitch);
+    document.querySelectorAll('.lang-switch button').forEach((b) => {
+      b.addEventListener('click', () => cinematicSwitch(b.dataset.lang));
+    });
   });
 
   window.FAB_I18N = { get lang() { return current; }, dicts: DICTS, switch: cinematicSwitch };

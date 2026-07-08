@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAB619 — Admin des actualités</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/assets/logo/fab-619-mobile-logo.svg">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body data-keep-title="1">
+
+<header id="nav">
+  <a class="nav-logo" href="/" aria-label="FAB619 — retour au site">
+    <img src="/assets/logo/fab-619-logo.svg" alt="FAB619" width="115" height="44">
+  </a>
+  <span class="admin-badge">ADMIN · ACTUALITÉS</span>
+  <a class="btn btn-solid btn-small" href="/#presse">Voir le site</a>
+</header>
+
+<main class="wrap admin-main">
+
+  <!-- token gate -->
+  <section id="gate" class="admin-card">
+    <h1>Espace rédaction</h1>
+    <p class="hint">Écrivez votre article dans <strong>une seule langue</strong> — il sera automatiquement traduit
+      en <strong>français, anglais et arabe</strong>. Vous pourrez relire et corriger chaque version avant de publier.</p>
+    <form id="gateForm">
+      <label for="token">Jeton d'administration <span aria-hidden="true">*</span></label>
+      <input id="token" name="token" type="password" autocomplete="off" required
+             aria-describedby="tokenHelp">
+      <p id="tokenHelp" class="hint">Défini par la variable d'environnement <code>ADMIN_TOKEN</code> du serveur
+        (valeur de démonstration par défaut : <code>fab619</code>).</p>
+      <button class="btn btn-solid" type="submit">Entrer</button>
+      <p id="gateError" class="form-error" role="alert" hidden>Jeton invalide — réessayez.</p>
+    </form>
+  </section>
+
+  <!-- editor -->
+  <section id="editor" class="admin-card" hidden>
+    <h1 id="editorTitle">Nouvel article</h1>
+
+    <form id="artForm" novalidate>
+      <div class="grid-2">
+        <div>
+          <label for="srcLang">Langue de rédaction <span aria-hidden="true">*</span></label>
+          <select id="srcLang">
+            <option value="fr" selected>Français</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+        <div>
+          <label for="date">Date de publication</label>
+          <input id="date" type="date">
+        </div>
+      </div>
+
+      <label for="title">Titre <span aria-hidden="true">*</span></label>
+      <input id="title" type="text" required maxlength="140" aria-describedby="titleErr">
+      <p id="titleErr" class="form-error" role="alert" hidden>Le titre est obligatoire.</p>
+
+      <label for="excerpt">Extrait (1–2 phrases pour la carte)</label>
+      <textarea id="excerpt" rows="2" maxlength="280"></textarea>
+
+      <label for="body">Corps de l'article <span aria-hidden="true">*</span></label>
+      <textarea id="body" rows="9" required aria-describedby="bodyErr bodyHelp"></textarea>
+      <p id="bodyHelp" class="hint">Séparez les paragraphes par une ligne vide.</p>
+      <p id="bodyErr" class="form-error" role="alert" hidden>Le corps de l'article est obligatoire.</p>
+
+      <div class="grid-2">
+        <div>
+          <label for="imageSel">Image d'illustration</label>
+          <select id="imageSel"></select>
+        </div>
+        <div>
+          <label for="imageFile">…ou téléverser (webp/png/jpg, ≤ 3 Mo)</label>
+          <input id="imageFile" type="file" accept="image/webp,image/png,image/jpeg,image/gif">
+        </div>
+      </div>
+      <img id="imagePreview" class="img-preview" alt="Aperçu de l'image choisie" hidden>
+
+      <label for="alt">Texte alternatif de l'image (accessibilité)</label>
+      <input id="alt" type="text" maxlength="160">
+
+      <div class="actions">
+        <button class="btn btn-solid" type="submit" id="translateBtn">Traduire en FR + EN + AR</button>
+        <button class="btn btn-ghost-dark" type="button" id="resetBtn">Vider le formulaire</button>
+      </div>
+    </form>
+
+    <!-- review tabs -->
+    <div id="review" hidden>
+      <h2>Relecture des trois versions</h2>
+      <p class="hint">Corrigez librement chaque version avant de publier.</p>
+      <div class="tabs" role="tablist" aria-label="Versions linguistiques">
+        <button class="tab on" role="tab" aria-selected="true" data-tab="fr" id="tab-fr" aria-controls="pane-fr">Français</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="en" id="tab-en" aria-controls="pane-en">English</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="ar" id="tab-ar" aria-controls="pane-ar" lang="ar">العربية</button>
+      </div>
+      <div class="pane" id="pane-fr" role="tabpanel" aria-labelledby="tab-fr">
+        <label for="fr-title">Titre (FR)</label><input id="fr-title" type="text">
+        <label for="fr-excerpt">Extrait (FR)</label><textarea id="fr-excerpt" rows="2"></textarea>
+        <label for="fr-body">Corps (FR)</label><textarea id="fr-body" rows="8"></textarea>
+        <label for="fr-alt">Alt image (FR)</label><input id="fr-alt" type="text">
+      </div>
+      <div class="pane" id="pane-en" role="tabpanel" aria-labelledby="tab-en" hidden>
+        <label for="en-title">Title (EN)</label><input id="en-title" type="text">
+        <label for="en-excerpt">Excerpt (EN)</label><textarea id="en-excerpt" rows="2"></textarea>
+        <label for="en-body">Body (EN)</label><textarea id="en-body" rows="8"></textarea>
+        <label for="en-alt">Image alt (EN)</label><input id="en-alt" type="text">
+      </div>
+      <div class="pane" id="pane-ar" role="tabpanel" aria-labelledby="tab-ar" hidden>
+        <label for="ar-title">العنوان (AR)</label><input id="ar-title" type="text" dir="rtl" lang="ar">
+        <label for="ar-excerpt">المقتطف (AR)</label><textarea id="ar-excerpt" rows="2" dir="rtl" lang="ar"></textarea>
+        <label for="ar-body">النصّ (AR)</label><textarea id="ar-body" rows="8" dir="rtl" lang="ar"></textarea>
+        <label for="ar-alt">النصّ البديل للصورة (AR)</label><input id="ar-alt" type="text" dir="rtl" lang="ar">
+      </div>
+      <div class="actions">
+        <button class="btn btn-solid" id="publishBtn" type="button">Publier l'article</button>
+        <button class="btn btn-ghost-dark" id="cancelReviewBtn" type="button">Revenir à la rédaction</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- list -->
+  <section id="listSection" class="admin-card" hidden>
+    <h2>Articles publiés</h2>
+    <ul id="artList" class="art-list"></ul>
+  </section>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="/js/admin.js" defer></script>
+</body>
+</html>

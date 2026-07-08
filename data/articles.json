@@ -1,0 +1,86 @@
+[
+  {
+    "id": "seed-jellydoser",
+    "slug": "jellydoser-doser-avec-precision",
+    "date": "2025-10-22",
+    "image": "/assets/projects/9ad09fa11d0af9946fadd3455bd633cea6c59810-3496x2161.webp",
+    "externalUrl": "https://www.fab619.tn/fr/press",
+    "source": "fr",
+    "i18n": {
+      "fr": {
+        "title": "JellyDoser — Doser avec précision",
+        "excerpt": "Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.",
+        "body": "Vous fabriquez des parfums, des huiles, des cosmétiques ou des jus artisanaux ? Votre savoir-faire mérite un outil de dosage à la hauteur : fiable, propre, précis — et surtout pensé pour les petites structures.\n\nChez FAB619, nous avons conçu des solutions de dosage et de remplissage sur mesure, simples à utiliser et capables d'évoluer avec vos produits. Le JellyDoser gère une large gamme de fluides avec une répétabilité parfaite, du flacon d'échantillon à la petite série.",
+        "alt": "Système de dosage JellyDoser dans l'atelier FAB619"
+      },
+      "en": {
+        "title": "JellyDoser — Dosing with precision",
+        "excerpt": "Perfumes, oils, cosmetics or artisanal juices: custom dosing and filling solutions designed for small businesses.",
+        "body": "Do you make perfumes, oils, cosmetics or artisanal juices? Your craft deserves a dosing tool that lives up to it: reliable, clean, precise — and above all designed for small businesses.\n\nAt FAB619 we build custom dosing and filling solutions that are simple to use and grow with your products. The JellyDoser handles a wide range of fluids with perfect repeatability, from sample vials to small production runs.",
+        "alt": "JellyDoser dosing system in the FAB619 workshop"
+      },
+      "ar": {
+        "title": "جيلي دوزر — جرعات بدقّة متناهية",
+        "excerpt": "عطور، زيوت، مستحضرات تجميل أو عصائر حرفية: حلول جرعات وتعبئة حسب الطلب، مصمّمة للمؤسّسات الصغيرة.",
+        "body": "هل تصنعون العطور أو الزيوت أو مستحضرات التجميل أو العصائر الحرفية؟ خبرتكم تستحقّ أداة جرعات في مستواها: موثوقة ونظيفة ودقيقة — ومصمّمة قبل كلّ شيء للمؤسّسات الصغيرة.\n\nفي فاب ٦١٩ صمّمنا حلول جرعات وتعبئة حسب الطلب، سهلة الاستعمال وقادرة على التطوّر مع منتجاتكم. يتعامل جيلي دوزر مع مجموعة واسعة من السوائل بتكرار مثالي، من عيّنة صغيرة إلى سلسلة إنتاج كاملة.",
+        "alt": "نظام الجرعات جيلي دوزر في ورشة فاب ٦١٩"
+      }
+    }
+  },
+  {
+    "id": "seed-automobile",
+    "slug": "fabrication-numerique-industrie-automobile",
+    "date": "2025-08-22",
+    "image": "/assets/projects/ad03852f168ab82e2511d70d3f8184bc8d06ccc0-1366x768.jpg",
+    "externalUrl": "https://www.fab619.tn/fr/press/quand-la-fabrication-numerique-repond-aux-defis-de-l-industrie-automobile",
+    "source": "fr",
+    "i18n": {
+      "fr": {
+        "title": "Quand la fabrication numérique répond aux défis de l'industrie automobile",
+        "excerpt": "Pompage, dosage et dépose d'adhésifs de différentes viscosités : les solutions FAB619 pour les procédés modernes d'assemblage.",
+        "body": "Cet article présente les solutions développées par FAB619 pour répondre aux exigences de l'industrie automobile en matière de pompage, dosage et dépose d'adhésifs de différentes viscosités.\n\nÀ travers plusieurs projets — ADM IDEX, SCPDS et JELLY DOSER — il met en lumière l'importance de la précision, de la répétabilité et de l'automatisation dans les procédés modernes d'assemblage.",
+        "alt": "Machine ADM IDEX livrée pour l'industrie automobile"
+      },
+      "en": {
+        "title": "When digital fabrication meets the challenges of the automotive industry",
+        "excerpt": "Pumping, dosing and dispensing adhesives of different viscosities: FAB619 solutions for modern assembly processes.",
+        "body": "This article presents the solutions developed by FAB619 to meet the automotive industry's requirements for pumping, dosing and dispensing adhesives of various viscosities.\n\nThrough several projects — ADM IDEX, SCPDS and JELLY DOSER — it highlights the importance of precision, repeatability and automation in modern assembly processes.",
+        "alt": "ADM IDEX machine delivered for the automotive industry"
+      },
+      "ar": {
+        "title": "عندما يستجيب التصنيع الرقمي لتحدّيات صناعة السيّارات",
+        "excerpt": "ضخّ اللواصق وجرعاتها ودفقها بمختلف درجات اللزوجة: حلول فاب ٦١٩ لعمليات التجميع الحديثة.",
+        "body": "يعرض هذا المقال الحلول التي طوّرتها فاب ٦١٩ للاستجابة لمتطلّبات صناعة السيّارات في مجال ضخّ اللواصق وجرعاتها ودفقها بمختلف درجات اللزوجة.\n\nومن خلال عدّة مشاريع — ADM IDEX وSCPDS وJELLY DOSER — يبرز المقال أهمّية الدقّة والتكرار والأتمتة في عمليات التجميع الصناعية الحديثة.",
+        "alt": "آلة ADM IDEX مسلَّمة لفائدة صناعة السيّارات"
+      }
+    }
+  },
+  {
+    "id": "seed-workshop-round2",
+    "slug": "machine-building-workshop-round-2",
+    "date": "2025-05-20",
+    "image": "/assets/projects/a31235291b1a7ce1cb5492d5f7a95b9b1bbdc73d-928x634.webp",
+    "externalUrl": "https://www.fab619.tn/fr/press/machine-building-workshop-round-2-4x-cnc-for-cettex-cetime-cetiba",
+    "source": "fr",
+    "i18n": {
+      "fr": {
+        "title": "Machine Building Workshop — Round 2 : 4 CNC pour CETTEX · CETIME · CETIBA",
+        "excerpt": "Quatre machines CNC construites avec les centres techniques tunisiens — la formation par la fabrication.",
+        "body": "Deuxième édition du Machine Building Workshop : quatre machines CNC construites de bout en bout avec les équipes des centres techniques CETTEX, CETIME et CETIBA.\n\nMécanique, électronique, logiciel de contrôle : chaque équipe assemble, câble et met en service sa propre machine. C'est la philosophie FAB619 — apprendre en fabriquant, pour que la compétence reste dans l'atelier.",
+        "alt": "Participants au Machine Building Workshop autour d'une CNC"
+      },
+      "en": {
+        "title": "Machine Building Workshop — Round 2: four CNC machines for CETTEX · CETIME · CETIBA",
+        "excerpt": "Four CNC machines built with the Tunisian technical centres — learning by making.",
+        "body": "Second edition of the Machine Building Workshop: four CNC machines built end-to-end with the teams of the CETTEX, CETIME and CETIBA technical centres.\n\nMechanics, electronics, control software: each team assembles, wires and commissions its own machine. That is the FAB619 philosophy — learning by making, so the skills stay in the workshop.",
+        "alt": "Machine Building Workshop participants around a CNC machine"
+      },
+      "ar": {
+        "title": "ورشة بناء الآلات — الجولة الثانية: أربع آلات CNC لفائدة CETTEX · CETIME · CETIBA",
+        "excerpt": "أربع آلات CNC صُنعت مع المراكز الفنّية التونسية — التكوين عن طريق التصنيع.",
+        "body": "الدورة الثانية من ورشة بناء الآلات: أربع آلات CNC صُنعت من الألف إلى الياء مع فرق المراكز الفنّية CETTEX وCETIME وCETIBA.\n\nميكانيك، إلكترونيك، برمجيات تحكّم: كلّ فريق يركّب آلته ويقوم بتوصيلها كهربائيًا وتشغيلها بنفسه. تلك هي فلسفة فاب ٦١٩ — التعلّم عن طريق التصنيع، لتبقى الكفاءة داخل الورشة.",
+        "alt": "مشاركون في ورشة بناء الآلات حول آلة CNC"
+      }
+    }
+  }
+]

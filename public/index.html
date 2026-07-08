@@ -37,10 +37,11 @@
     <a href="#contact"     data-i18n="navContact">Contact</a>
   </nav>
   <div class="nav-actions">
-    <button id="langBtn" aria-label="التبديل إلى العربية">
-      <img src="/assets/language-icon.svg" alt="" width="15" height="15" class="lang-ico">
-      <span id="langBtnText">عربي</span>
-    </button>
+    <div class="lang-switch" role="group" data-i18n-aria="langGroupLabel" aria-label="Choix de la langue">
+      <button data-lang="fr" aria-pressed="true">FR</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="ar" aria-pressed="false" lang="ar">ع</button>
+    </div>
     <button id="burger" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="menuLabel" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -67,7 +68,7 @@
 
   <div class="hero-content">
     <p class="kicker" data-i18n="heroKicker">BIENVENUE CHEZ FAB619</p>
-    <h1 data-i18n="heroTitle">Fabrication<br>à la demande</h1>
+    <h1 id="heroH1" data-i18n="heroTitle">Fabrication<br>à la demande</h1>
     <p class="hero-caption" id="heroCaption" aria-live="polite" data-i18n="heroBodyShort">Machines avancées, systèmes d'automatisation et fabrication numérique — du concept au prototype.</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="#services" data-i18n="heroCta">DÉCOUVRIR</a>
@@ -103,6 +104,13 @@
         <img src="/assets/images/whoarewe/right-bottom.webp" data-i18n-alt="altAbout3" alt="Détail d'un système de dosage" loading="lazy" width="420" height="240">
       </div>
     </div>
+  </div>
+
+  <div class="wrap stats-band reveal" id="statsBand">
+    <div class="stat"><span class="stat-num" data-count="23">0</span><span class="stat-label" data-i18n="statPartners">Clients &amp; partenaires</span></div>
+    <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label" data-i18n="statServices">Services intégrés</span></div>
+    <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label" data-i18n="statProjects">Projets en vitrine</span></div>
+    <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-label" data-i18n="statSites">Sites — Monastir &amp; Tunis</span></div>
   </div>
 </section>
 
@@ -255,34 +263,8 @@
       <h2 data-i18n="pressTitle">Actualités, mises à jour et histoires</h2>
       <p data-i18n="pressBody">Nos derniers événements, projets et solutions innovantes.</p>
     </div>
-    <div class="press-grid">
-      <article class="press-card reveal">
-        <a href="https://www.fab619.tn/fr/press" target="_blank" rel="noopener">
-          <img src="/assets/projects/9ad09fa11d0af9946fadd3455bd633cea6c59810-3496x2161.webp" data-i18n-alt="press1t" alt="JellyDoser" loading="lazy">
-          <time dir="ltr" data-i18n="press1date">22.10.2025</time>
-          <h3 data-i18n="press1t">JellyDoser — Doser avec précision</h3>
-          <p data-i18n="press1d">Parfums, huiles, cosmétiques ou jus artisanaux : des solutions de dosage et de remplissage sur mesure, pensées pour les petites structures.</p>
-          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
-        </a>
-      </article>
-      <article class="press-card reveal">
-        <a href="https://www.fab619.tn/fr/press/quand-la-fabrication-numerique-repond-aux-defis-de-l-industrie-automobile" target="_blank" rel="noopener">
-          <img src="/assets/projects/ad03852f168ab82e2511d70d3f8184bc8d06ccc0-1366x768.jpg" data-i18n-alt="press2t" alt="Fabrication numérique automobile" loading="lazy">
-          <time dir="ltr" data-i18n="press2date">22.08.2025</time>
-          <h3 data-i18n="press2t">La fabrication numérique face aux défis de l'automobile</h3>
-          <p data-i18n="press2d">Pompage, dosage et dépose d'adhésifs : précision, répétabilité et automatisation dans les procédés modernes d'assemblage — ADM IDEX, SCPDS, JELLY DOSER.</p>
-          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
-        </a>
-      </article>
-      <article class="press-card reveal">
-        <a href="https://www.fab619.tn/fr/press/machine-building-workshop-round-2-4x-cnc-for-cettex-cetime-cetiba" target="_blank" rel="noopener">
-          <img src="/assets/projects/a31235291b1a7ce1cb5492d5f7a95b9b1bbdc73d-928x634.webp" data-i18n-alt="press3t" alt="Machine Building Workshop" loading="lazy">
-          <time dir="ltr" data-i18n="press3date">20.05.2025</time>
-          <h3 data-i18n="press3t">Machine Building Workshop — Round 2</h3>
-          <p data-i18n="press3d">4 machines CNC construites pour CETTEX · CETIME · CETIBA — la formation par la fabrication.</p>
-          <span class="proj-more" data-i18n="readMore">Lire l'article</span>
-        </a>
-      </article>
+    <div class="press-grid" id="pressGrid" aria-live="polite">
+      <p class="press-status" data-i18n="loadingLabel">Chargement…</p>
     </div>
   </div>
 </section>
@@ -333,11 +315,7 @@
 
 <footer>
   <p><span data-i18n="footRights">Tous droits réservés 2025 © FAB619 — Fabrication à la demande</span></p>
-  <p>
-    <a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a>
-    <span aria-hidden="true"> · </span>
-    <a href="/cinematic.html" data-i18n="cineLink">Expérience 3D cinématique</a>
-  </p>
+  <p><a href="https://www.fab619.tn/fr" target="_blank" rel="noopener">fab619.tn</a></p>
 </footer>
 
 <script src="/lib/gsap.min.js"></script>
